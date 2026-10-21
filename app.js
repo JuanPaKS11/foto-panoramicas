@@ -340,20 +340,20 @@ const SEED_QUOTES = [
   {
     id: 'COT-2026-085',
     date: '18 Oct 2026',
-    category: 'Personal',
-    schoolName: 'Dra. Elena Ramírez (Marca Personal)',
-    level: 'Médico Especialista',
-    studentsCount: '1 pers.',
-    eventDate: '15 de Noviembre 2026',
-    city: 'Estudio Central Insurgentes',
-    contactName: 'Dra. Elena Ramírez',
-    contactRole: 'Cliente Particular',
-    contactPhone: '+52 (55) 4321-8765',
-    contactEmail: 'elena.ramirez.md@hospital.org',
-    services: ['Retrato Corporativo en Estudio', 'Claroscuro Fine Art', '15 Archivos Retocados en Alta Resolución'],
-    notes: 'Fotografías destinadas a sitio web médico y publicaciones editoriales.',
+    category: 'Escolar',
+    schoolName: 'Instituto Cumbres México',
+    level: 'Bachillerato Anáhuac',
+    studentsCount: '220 alumnos',
+    eventDate: 'Mayo 2026',
+    city: 'Huixquilucan, EdoMex',
+    contactName: 'Lic. Rodrigo Baillères',
+    contactRole: 'Comité de Graduación',
+    contactPhone: '+52 (55) 3456-7890',
+    contactEmail: 'graduacion@cumbresmexico.com',
+    services: ['Toma Panorámica en Gradas', 'Togas y Birretes en Préstamo', 'Cuadro de Caoba'],
+    notes: 'Solicitaron visita presencial para llevar muestras de cuadros de caoba a la junta de directores y padres el miércoles a las 7:00 PM.',
     status: 'Nueva',
-    estimatedTotal: '$4,500 MXN'
+    estimatedTotal: '$275,000 MXN'
   }
 ];
 
@@ -1088,7 +1088,7 @@ function initAdminSuite() {
     renderAdminVaults();
     modal?.classList.add('active');
     document.body.style.overflow = 'hidden';
-    showToast('Abriendo la libreta y agenda del estudio...', 'gold');
+    showToast('Abriendo libreta y agenda del estudio...', 'gold');
   }
 
   function closeSuite() {
@@ -1107,13 +1107,13 @@ function initAdminSuite() {
   });
 
   btnReset?.addEventListener('click', () => {
-    if (confirm('¿Deseas restablecer todos los datos demo a los valores originales de fábrica?')) {
+    if (confirm('¿Deseas restablecer las notas de la agenda y las fotos demo a los valores de fábrica?')) {
       resetStudioDemoData();
     }
   });
 
-  // Admin Tab Navigation
-  const tabBtns = modal?.querySelectorAll('.admin-tab-btn');
+  // Binder Tab Navigation (Friendly Tabs)
+  const tabBtns = modal?.querySelectorAll('.binder-tab-btn, .admin-tab-btn');
   const tabPanels = modal?.querySelectorAll('.admin-tab-panel');
 
   tabBtns?.forEach(btn => {
@@ -1128,7 +1128,7 @@ function initAdminSuite() {
     });
   });
 
-  // CRM Search & Filters
+  // Search & Filters in Agenda
   const searchInput = document.getElementById('crm-search-input');
   searchInput?.addEventListener('input', (e) => {
     const term = e.target.value.toLowerCase();
@@ -1148,13 +1148,37 @@ function initAdminSuite() {
     });
   });
 
-  // Add Sample Quote Button
+  // Add Realistic Sample Quote Button
   const btnSample = document.getElementById('btn-admin-add-sample-quote');
   btnSample?.addEventListener('click', () => {
     const samples = [
-      { school: 'Instituto Cumbres México', level: 'Bachillerato', students: '220 alumnos', city: 'Huixquilucan', name: 'Lic. Rodrigo Baillères', phone: '+52 (55) 3456-7890' },
-      { school: 'Colegio Madrid A.C.', level: 'Secundaria', students: '160 alumnos', city: 'Tlalpan', name: 'Mtra. Elena Gómez', phone: '+52 (55) 7654-3210' },
-      { school: 'Universidad Iberoamericana', level: 'Arquitectura', students: '140 alumnos', city: 'Santa Fe', name: 'Arq. Mateo Solís', phone: '+52 (55) 9876-5432' }
+      {
+        school: 'Instituto Cumbres México',
+        level: 'Bachillerato Anáhuac',
+        students: '220 alumnos',
+        city: 'Huixquilucan, EdoMex',
+        name: 'Lic. Rodrigo Baillères',
+        phone: '+52 (55) 3456-7890',
+        note: 'Pidieron llevar muestras de marcos de caoba a la junta de directores y padres el próximo miércoles.'
+      },
+      {
+        school: 'Colegio Madrid A.C.',
+        level: 'Secundaria & Bachillerato',
+        students: '160 alumnos',
+        city: 'Tlalpan, CDMX',
+        name: 'Mtra. Elena Gómez',
+        phone: '+52 (55) 7654-3210',
+        note: 'Requieren toma en cancha cívica con gradas de 6 niveles y togas institucionales en préstamo.'
+      },
+      {
+        school: 'Universidad Panamericana',
+        level: 'Facultad de Medicina',
+        students: '190 alumnos',
+        city: 'Mixcoac, CDMX',
+        name: 'Dr. Emilio Zepeda',
+        phone: '+52 (55) 9876-5432',
+        note: 'Solicitan presupuesto membretado en PDF para someterlo a votación del comité de graduación.'
+      }
     ];
     const picked = samples[Math.floor(Math.random() * samples.length)];
 
@@ -1170,9 +1194,9 @@ function initAdminSuite() {
       contactName: picked.name,
       contactRole: 'Comité de Graduación',
       contactPhone: picked.phone,
-      contactEmail: 'contacto@colegio.edu.mx',
-      services: ['Toma Panorámica de Honor', 'Retrato Individual de Toga', 'Cuadro de Caoba'],
-      notes: 'Solicitud simulada desde la demostración ejecutiva del panel de control.',
+      contactEmail: 'comite@colegio.edu.mx',
+      services: ['Toma Panorámica de Honor', 'Retrato Individual de Toga', 'Cuadro de Caoba Artesanal'],
+      notes: picked.note,
       status: 'Nueva',
       estimatedTotal: `$${(parseInt(picked.students) * 1250).toLocaleString('es-MX')} MXN`
     };
@@ -1180,27 +1204,7 @@ function initAdminSuite() {
     saveStoredQuote(simulated);
     updateAdminStats();
     renderCrmTable();
-    showToast(`¡Nueva cotización simulada añadida (${simulated.id})!`, 'success');
-  });
-
-  // Profit Calculator Slider
-  const slider = document.getElementById('calc-students-slider');
-  const label = document.getElementById('calc-students-label');
-  const grossEl = document.getElementById('calc-gross-revenue');
-  const costsEl = document.getElementById('calc-costs');
-  const netEl = document.getElementById('calc-net-profit');
-
-  slider?.addEventListener('input', () => {
-    const val = parseInt(slider.value);
-    if (label) label.textContent = `${val} alumnos`;
-
-    const gross = val * 1250;
-    const costs = val * 400;
-    const net = gross - costs;
-
-    if (grossEl) grossEl.textContent = `$${gross.toLocaleString('es-MX')} MXN`;
-    if (costsEl) costsEl.textContent = `$${costs.toLocaleString('es-MX')} MXN`;
-    if (netEl) netEl.textContent = `$${net.toLocaleString('es-MX')} MXN`;
+    showToast(`¡Anotada nueva escuela: ${simulated.schoolName}!`, 'success');
   });
 
   // New Vault Modal Handling
@@ -1214,17 +1218,14 @@ function updateAdminStats() {
   const totalSchools = Object.keys(sessions).length;
   const newQuotesCount = quotes.filter(q => q.status === 'Nueva').length;
 
-  const badgeTop = document.getElementById('top-badge-quotes-count');
-  if (badgeTop) badgeTop.textContent = quotes.length;
-
   const kpiSchools = document.getElementById('kpi-display-schools');
-  if (kpiSchools) kpiSchools.textContent = totalSchools;
+  if (kpiSchools) kpiSchools.textContent = `${totalSchools} Colegios`;
 
   const kpiQuotes = document.getElementById('kpi-display-quotes');
-  if (kpiQuotes) kpiQuotes.textContent = quotes.length;
+  if (kpiQuotes) kpiQuotes.textContent = `${quotes.length} Escuelas`;
 
   const kpiPendingSub = document.getElementById('kpi-subtext-quotes-pending');
-  if (kpiPendingSub) kpiPendingSub.textContent = `${newQuotesCount} pendientes de atender`;
+  if (kpiPendingSub) kpiPendingSub.textContent = `${newQuotesCount} comités por contactar hoy`;
 
   const badgeCrm = document.getElementById('tab-badge-crm-count');
   if (badgeCrm) badgeCrm.textContent = quotes.length;
@@ -1234,8 +1235,8 @@ function updateAdminStats() {
 }
 
 function renderCrmTable(filter = 'all', searchTerm = '') {
-  const tbody = document.getElementById('crm-table-body');
-  if (!tbody) return;
+  const container = document.getElementById('crm-cards-container');
+  if (!container) return;
 
   let quotes = getStoredQuotes();
 
@@ -1251,66 +1252,102 @@ function renderCrmTable(filter = 'all', searchTerm = '') {
   }
 
   if (quotes.length === 0) {
-    tbody.innerHTML = `
-      <tr>
-        <td colspan="6" style="text-align: center; padding: 2.5rem; color: var(--text-dim);">
-          No se encontraron cotizaciones con ese criterio de búsqueda o filtro.
-        </td>
-      </tr>
+    container.innerHTML = `
+      <div style="text-align: center; padding: 3rem 1.5rem; background: #171310; border-radius: 16px; border: 1px dashed rgba(255,255,255,0.12);">
+        <div style="font-size: 2.5rem; margin-bottom: 0.6rem;">📋</div>
+        <h4 style="color: #fcf9f2; font-size: 1.15rem; margin-bottom: 0.35rem; font-family: var(--font-serif);">No hay solicitudes con ese filtro</h4>
+        <p style="color: #a89d8d; font-size: 0.88rem; max-width: 440px; margin: 0 auto;">
+          Intenta cambiar el término de búsqueda o haz clic en <strong>"+ Anotar Nueva Escuela"</strong> para agregar una.
+        </p>
+      </div>
     `;
     return;
   }
 
-  tbody.innerHTML = quotes.map(q => {
-    let statusClass = 'status-nueva';
-    if (q.status === 'En Proceso') statusClass = 'status-proceso';
-    if (q.status === 'Aprobada') statusClass = 'status-aprobada';
+  container.innerHTML = quotes.map(q => {
+    let badgeClass = 'status-nueva';
+    let badgeLabel = '🟡 Por llamar hoy';
+    if (q.status === 'En Proceso') {
+      badgeClass = 'status-proceso';
+      badgeLabel = '🔵 En pláticas con el comité';
+    } else if (q.status === 'Aprobada') {
+      badgeClass = 'status-aprobada';
+      badgeLabel = '🟢 Fecha confirmada';
+    }
+
+    const cleanPhone = (q.contactPhone || '').replace(/[^0-9]/g, '');
+    const waText = encodeURIComponent(`Hola ${q.contactName}, le saluda el equipo de Foto Panorámicas México con respecto a la cotización ${q.id} para ${q.schoolName}. ¿Gusta que agendemos una visita con muestras físicas de marcos de caoba?`);
 
     return `
-      <tr>
-        <td>
-          <div class="quote-folio">${q.id}</div>
-          <div class="school-meta-cell">📅 ${q.date}</div>
-        </td>
-        <td>
-          <div class="school-name-cell">${q.schoolName}</div>
-          <div class="school-meta-cell">📍 ${q.city} · ${q.level || 'Escolar'}</div>
-        </td>
-        <td>
-          <div style="font-weight: 600; color: #fff;">${q.contactName}</div>
-          <div class="school-meta-cell">📞 ${q.contactPhone}</div>
-          <div class="school-meta-cell">✉️ ${q.contactEmail}</div>
-        </td>
-        <td>
-          <div style="font-weight: 700; color: var(--gold-vibrant);">${q.studentsCount}</div>
-          <div class="school-meta-cell">Fecha: ${q.eventDate}</div>
-          <div class="school-meta-cell" style="color: #34d399;">Est: ${q.estimatedTotal || 'A convenir'}</div>
-        </td>
-        <td>
-          <span class="status-pill-badge ${statusClass}">● ${q.status}</span>
-        </td>
-        <td style="text-align: right;">
-          <div class="crm-actions-cell" style="justify-content: flex-end;">
-            <button class="btn-table-action action-gold btn-crm-proposal" data-id="${q.id}" title="Ver Propuesta Formal / Imprimir PDF">
-              📄 Propuesta
-            </button>
-            <a href="https://wa.me/${q.contactPhone?.replace(/[^0-9]/g, '')}?text=Hola%20${encodeURIComponent(q.contactName)}%2C%20te%20contacto%20de%20Foto%20Panor%C3%A1micas%20Premium%20con%20respecto%20a%20tu%20cotizaci%C3%B3n%20${q.id}." target="_blank" rel="noopener noreferrer" class="btn-table-action action-wa" title="Abrir WhatsApp">
-              💬 WA
-            </a>
-            <button class="btn-table-action btn-crm-status" data-id="${q.id}" title="Cambiar Estatus">
-              🔄
-            </button>
-            <button class="btn-table-action btn-crm-delete" data-id="${q.id}" title="Eliminar registro" style="color: #f87171;">
-              ✕
-            </button>
+      <div class="school-request-card" data-id="${q.id}">
+        <!-- Top header row -->
+        <div class="request-card-header">
+          <div>
+            <div style="display: flex; align-items: center; gap: 0.65rem; margin-bottom: 0.3rem;">
+              <span class="request-folio-tag">${q.id}</span>
+              <span class="request-date-tag">📅 Solicitud: ${q.date || 'Reciente'}</span>
+            </div>
+            <h4 class="request-school-name font-serif">${q.schoolName}</h4>
+            <span class="request-school-sub">📍 ${q.city || 'Ciudad de México'} · Nivel: ${q.level || 'Escolar'}</span>
           </div>
-        </td>
-      </tr>
+
+          <div style="display: flex; flex-direction: column; align-items: flex-end; gap: 0.35rem;">
+            <span class="status-pill-badge ${badgeClass}">${badgeLabel}</span>
+            <span style="font-size: 0.84rem; color: var(--gold-vibrant); font-weight: 700; margin-top: 0.15rem;">Presupuesto: ${q.estimatedTotal || 'A convenir'}</span>
+          </div>
+        </div>
+
+        <!-- 3 Structured human info columns -->
+        <div class="request-card-grid">
+          <div class="request-col">
+            <span class="col-label">👤 Persona de Contacto</span>
+            <span class="col-val">${q.contactName}</span>
+            <span class="col-sub">${q.contactRole || 'Comité de Graduación'} · 📞 ${q.contactPhone}</span>
+          </div>
+
+          <div class="request-col">
+            <span class="col-label">👥 Generación Escolar</span>
+            <span class="col-val">${q.studentsCount || '150 alumnos'}</span>
+            <span class="col-sub">🗓️ Fecha tentativa: ${q.eventDate || 'Mayo 2026'}</span>
+          </div>
+
+          <div class="request-col">
+            <span class="col-label">🖼️ Paquete Solicitado</span>
+            <span class="col-val">${(q.services && q.services[0]) || 'Panorámica en Gradas'}</span>
+            <span class="col-sub">${(q.services && q.services.slice(1).join(', ')) || 'Enmarcado en Caoba'}</span>
+          </div>
+        </div>
+
+        <!-- Workshop Handwritten Note -->
+        <div class="request-card-note">
+          <span style="font-weight: 700; color: #fff;">📝 Apunte del estudio:</span>
+          <em>"${q.notes || 'Pendiente de acordar junta de presentación de muestras físicas de cuadros con directores.'}"</em>
+        </div>
+
+        <!-- Action Buttons Row -->
+        <div class="request-card-actions">
+          <a href="https://wa.me/${cleanPhone}?text=${waText}" target="_blank" rel="noopener noreferrer" class="btn-card-action btn-wa" title="Escribir por WhatsApp directo">
+            <span>💬</span> <span>Escribir por WhatsApp</span>
+          </a>
+
+          <button type="button" class="btn-card-action btn-proposal btn-crm-proposal" data-id="${q.id}" title="Ver Presupuesto Formal con Hoja Membretada">
+            <span>📄</span> <span>Ver Presupuesto en PDF</span>
+          </button>
+
+          <button type="button" class="btn-card-action btn-toggle-status btn-crm-status" data-id="${q.id}" title="Cambiar Estado">
+            <span>🔄</span> <span>Cambiar Estado</span>
+          </button>
+
+          <button type="button" class="btn-card-action btn-delete-request btn-crm-delete" data-id="${q.id}" title="Eliminar registro">
+            <span>✕</span>
+          </button>
+        </div>
+      </div>
     `;
   }).join('');
 
-  // Attach table events
-  tbody.querySelectorAll('.btn-crm-proposal').forEach(btn => {
+  // Attach card action events
+  container.querySelectorAll('.btn-crm-proposal').forEach(btn => {
     btn.addEventListener('click', () => {
       const qId = btn.getAttribute('data-id');
       const allQuotes = getStoredQuotes();
@@ -1319,7 +1356,7 @@ function renderCrmTable(filter = 'all', searchTerm = '') {
     });
   });
 
-  tbody.querySelectorAll('.btn-crm-status').forEach(btn => {
+  container.querySelectorAll('.btn-crm-status').forEach(btn => {
     btn.addEventListener('click', () => {
       const qId = btn.getAttribute('data-id');
       const allQuotes = getStoredQuotes();
@@ -1332,21 +1369,21 @@ function renderCrmTable(filter = 'all', searchTerm = '') {
 
       updateStoredQuotesList(allQuotes);
       updateAdminStats();
-      renderCrmTable();
-      showToast(`Estatus de ${quote.id} cambiado a: ${quote.status}`, 'success');
+      renderCrmTable(filter, searchTerm);
+      showToast(`Estado de ${quote.schoolName}: ${quote.status}`, 'success');
     });
   });
 
-  tbody.querySelectorAll('.btn-crm-delete').forEach(btn => {
+  container.querySelectorAll('.btn-crm-delete').forEach(btn => {
     btn.addEventListener('click', () => {
       const qId = btn.getAttribute('data-id');
-      if (confirm(`¿Eliminar la cotización ${qId}?`)) {
+      if (confirm(`¿Eliminar la solicitud de ${qId}?`)) {
         let allQuotes = getStoredQuotes();
         allQuotes = allQuotes.filter(q => q.id !== qId);
         updateStoredQuotesList(allQuotes);
         updateAdminStats();
-        renderCrmTable();
-        showToast('Cotización eliminada del CRM', 'gold');
+        renderCrmTable(filter, searchTerm);
+        showToast('Solicitud eliminada de la agenda', 'gold');
       }
     });
   });

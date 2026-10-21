@@ -39,7 +39,7 @@
           <span>🌐</span> <span>Vista Pública</span>
         </button>
         <button type="button" class="btn-demo-mode highlight-admin" id="btn-open-admin-panel" title="Abrir Libreta y Agenda del Estudio">
-          <span>📁</span> <span>Agenda & Control del Estudio (Demo)</span>
+          <span>📖</span> <span>Agenda & Pedidos del Estudio (Demo)</span>
           <span class="badge-counter-mini" id="top-badge-quotes-count">5</span>
         </button>
       </div>
@@ -94,13 +94,13 @@
             <span>Pedir Cotización</span>
           </a>
           <button type="button" class="btn btn-outline-gold btn-sm" id="nav-admin-btn" title="Agenda y Control del Estudio">
-            <span>📁 Agenda Demo</span>
+            <span>📖 Agenda del Estudio</span>
           </button>
         </div>
 
         <div class="mobile-drawer-footer">
           <button type="button" class="btn btn-outline-gold btn-sm" id="mobile-drawer-admin-btn" style="width: 100%; margin-bottom: 0.85rem; justify-content: center;">
-            <span>📁 Agenda & Control del Estudio (Demo)</span>
+            <span>📖 Agenda & Pedidos del Estudio (Demo)</span>
           </button>
           <div class="drawer-contact-badge">
             <span class="dot-online"></span>
@@ -795,344 +795,215 @@
        STUDIO MANAGEMENT SUITE (MODAL OPERATIVO ADMINISTRADOR DEMO)
        ========================================================================== -->
   <div id="admin-suite-modal" class="admin-suite-modal" aria-hidden="true">
-    <div class="admin-suite-window">
-      <!-- Suite Top Header -->
-      <div class="admin-suite-header">
-        <div class="admin-brand-block">
-          <div class="admin-brand-icon">📁</div>
+    <div class="admin-suite-window studio-binder">
+      
+      <!-- Binder Top Header -->
+      <div class="binder-header">
+        <div class="binder-header-left">
+          <div class="binder-icon">📖</div>
           <div>
-            <div class="admin-brand-title">
-              FOTO PANORÁMICAS MÉXICO
-              <span class="gold-tag">AGENDA Y CONTROL DEL ESTUDIO</span>
-            </div>
-            <div class="admin-brand-subtitle">Control de solicitudes de escuelas, agenda de fechas de toma y seguimiento de entregas</div>
+            <div class="binder-tag-label">TALLER ARTESANAL INSURGENTES SUR · CICLO ESCOLAR 2026</div>
+            <h3 class="binder-title font-serif">Libreta de Pedidos & Agenda Escolar</h3>
+            <p class="binder-subtitle">Organizador diario de citas con directores, fechas de fotos en gradas y entrega de cuadros de caoba.</p>
           </div>
         </div>
 
-        <div class="admin-header-controls">
-          <button type="button" class="btn-admin-pill" id="btn-admin-sync-indicator" title="Almacenamiento Local Activo">
-            <span class="live-pulse"></span>
-            <span>Libreta del Estudio Activa</span>
+        <div class="binder-header-actions">
+          <button type="button" class="btn btn-gold btn-sm" id="btn-admin-add-sample-quote">
+            <span>✍️ + Anotar Nueva Escuela</span>
           </button>
-          <button type="button" class="btn-admin-pill warning-pill" id="btn-reset-demo-data" title="Restablecer datos originales de prueba">
-            <span>🔄 Restablecer Demo</span>
-          </button>
-          <button type="button" class="btn-admin-close" id="btn-close-admin-suite" aria-label="Cerrar panel de administración">✕</button>
+          <button type="button" class="btn-binder-close" id="btn-close-admin-suite" aria-label="Cerrar libreta">✕</button>
         </div>
       </div>
 
-      <!-- Executive KPI Banner -->
-      <div class="admin-kpi-strip">
-        <div class="admin-kpi-card">
-          <div class="kpi-card-head">
-            <span class="kpi-label">Colegios & Generaciones</span>
-            <span class="kpi-icon">🏛️</span>
-          </div>
-          <div class="kpi-value" id="kpi-display-schools">24</div>
-          <div class="kpi-subtext">
-            <span class="kpi-trend-up">↑ +4</span> en temporada actual
+      <!-- Warm Status Strip (3 simple human stats) -->
+      <div class="binder-status-strip">
+        <div class="binder-status-item">
+          <span class="status-dot dot-yellow"></span>
+          <div>
+            <strong id="kpi-display-quotes">5 Escuelas</strong>
+            <small id="kpi-subtext-quotes-pending">3 comités por contactar hoy</small>
           </div>
         </div>
 
-        <div class="admin-kpi-card kpi-blue">
-          <div class="kpi-card-head">
-            <span class="kpi-label">Alumnos Registrados</span>
-            <span class="kpi-icon">👥</span>
-          </div>
-          <div class="kpi-value" id="kpi-display-students">3,850</div>
-          <div class="kpi-subtext">
-            <span>Galerías activas</span>
+        <div class="binder-status-item">
+          <span class="status-dot dot-blue"></span>
+          <div>
+            <strong>4 Tomas en Campus</strong>
+            <small>Gradas programadas este mes</small>
           </div>
         </div>
 
-        <div class="admin-kpi-card kpi-emerald">
-          <div class="kpi-card-head">
-            <span class="kpi-label">Solicitudes de Escuelas</span>
-            <span class="kpi-icon">📋</span>
-          </div>
-          <div class="kpi-value" id="kpi-display-quotes">5</div>
-          <div class="kpi-subtext">
-            <span id="kpi-subtext-quotes-pending" class="kpi-trend-up">3 por atender hoy</span>
-          </div>
-        </div>
-
-        <div class="admin-kpi-card kpi-purple">
-          <div class="kpi-card-head">
-            <span class="kpi-label">Facturación Proyectada</span>
-            <span class="kpi-icon">💵</span>
-          </div>
-          <div class="kpi-value" id="kpi-display-revenue">$648,000</div>
-          <div class="kpi-subtext">
-            <span>Temporada Graduaciones</span>
+        <div class="binder-status-item">
+          <span class="status-dot dot-green"></span>
+          <div>
+            <strong id="kpi-display-schools">24 Colegios</strong>
+            <small>Generaciones atendidas con éxito</small>
           </div>
         </div>
       </div>
 
-      <!-- Tabs Navigation -->
-      <div class="admin-nav-tabs">
-        <button type="button" class="admin-tab-btn active" data-tab="tab-crm">
-          <span>📋</span> Solicitudes de Escuelas (CRM)
-          <span class="tab-badge" id="tab-badge-crm-count">5</span>
+      <!-- Simple, Clean Tabs (Only 3 intuitive tabs) -->
+      <div class="binder-tabs-nav">
+        <button type="button" class="binder-tab-btn active" data-tab="tab-crm">
+          <span>📋</span> Solicitudes de Escuelas
+          <span class="binder-tab-count" id="tab-badge-crm-count">5</span>
         </button>
-        <button type="button" class="admin-tab-btn" data-tab="tab-vaults">
-          <span>🎓</span> Colegios & Galerías de Alumnos
-          <span class="tab-badge" id="tab-badge-vaults-count">5</span>
-        </button>
-        <button type="button" class="admin-tab-btn" data-tab="tab-pricing">
-          <span>🏷️</span> Paquetes & Costos del Taller
-        </button>
-        <button type="button" class="admin-tab-btn" data-tab="tab-stats">
+        <button type="button" class="binder-tab-btn" data-tab="tab-stats">
           <span>📅</span> Calendario de Tomas en Campus
+        </button>
+        <button type="button" class="binder-tab-btn" data-tab="tab-vaults">
+          <span>🎓</span> Colegios con Fotos Listas
+          <span class="binder-tab-count" id="tab-badge-vaults-count">5</span>
         </button>
       </div>
 
       <!-- Tab Content Area -->
-      <div class="admin-tab-content-area">
+      <div class="binder-content-area">
         
-        <!-- Tab 1: CRM & Cotizaciones -->
+        <!-- Tab 1: Solicitudes de Escuelas (Card-Based List) -->
         <div class="admin-tab-panel active" id="tab-crm">
-          <div class="crm-controls-row">
-            <div class="crm-search-box">
+          <!-- Warm friendly helper banner -->
+          <div class="binder-friendly-helper">
+            <span class="helper-icon">💡</span>
+            <div class="helper-text">
+              <strong>Control diario de escuelas y presupuestos:</strong> Toca en <strong>"📄 Ver Presupuesto en PDF"</strong> para abrir la propuesta formal en hoja membretada lista para imprimir, o en <strong>"💬 WhatsApp"</strong> para contactar al comité escolar con un mensaje cordial ya redactado.
+            </div>
+          </div>
+
+          <div class="requests-filter-bar">
+            <div class="requests-search-box">
               <span>🔍</span>
-              <input type="text" id="crm-search-input" placeholder="Buscar por escuela, contacto, folio o ciudad...">
+              <input type="text" id="crm-search-input" placeholder="Buscar por colegio, persona o ciudad...">
             </div>
-            <div class="crm-filters-group">
+            <div class="requests-filter-pills">
               <button type="button" class="crm-filter-btn active" data-filter="all">Todas</button>
-              <button type="button" class="crm-filter-btn" data-filter="Nueva">Nuevas</button>
-              <button type="button" class="crm-filter-btn" data-filter="En Proceso">En Proceso</button>
-              <button type="button" class="crm-filter-btn" data-filter="Aprobada">Aprobadas</button>
+              <button type="button" class="crm-filter-btn" data-filter="Nueva">Por Contactar</button>
+              <button type="button" class="crm-filter-btn" data-filter="En Proceso">En Pláticas</button>
+              <button type="button" class="crm-filter-btn" data-filter="Aprobada">Confirmadas</button>
             </div>
           </div>
 
-          <div style="background: rgba(16, 185, 129, 0.08); border: 1px dashed rgba(16, 185, 129, 0.3); border-radius: 10px; padding: 0.75rem 1rem; margin-bottom: 1.25rem; font-size: 0.82rem; color: #a7f3d0; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.75rem;">
-            <span>💡 <strong>Demostración Interactiva en Vivo:</strong> Cualquier persona que solicite una cotización en el formulario de la página web aparecerá instantáneamente en esta bandeja gracias a la sincronización en tiempo real.</span>
-            <button type="button" class="btn btn-gold btn-sm" id="btn-admin-add-sample-quote" style="white-space: nowrap;">+ Simular Nueva Cotización</button>
-          </div>
-
-          <div class="crm-table-wrapper">
-            <table class="crm-table">
-              <thead>
-                <tr>
-                  <th>Folio & Fecha</th>
-                  <th>Escuela / Cliente</th>
-                  <th>Contacto</th>
-                  <th>Volumen / Fecha Evento</th>
-                  <th>Estatus</th>
-                  <th style="text-align: right;">Acciones</th>
-                </tr>
-              </thead>
-              <tbody id="crm-table-body">
-                <!-- Injected dynamically by app.js -->
-              </tbody>
-            </table>
+          <!-- Cards Container (rendered by app.js as warm, friendly cards) -->
+          <div class="requests-cards-list" id="crm-cards-container">
+            <!-- Injected dynamically by app.js -->
           </div>
         </div>
 
-        <!-- Tab 2: Generaciones & Bóvedas Escolares -->
+        <!-- Tab 2: Calendario de Tomas en Campus -->
+        <div class="admin-tab-panel" id="tab-stats">
+          <div class="calendar-agenda-intro">
+            <h4>Próximas Tomas Programadas con Gradas en Campus</h4>
+            <p>Fechas confirmadas para montaje de gradas modulares, iluminación de exteriores y toma panorámica oficial.</p>
+          </div>
+
+          <div class="calendar-timeline-list">
+            <div class="calendar-event-card">
+              <div class="cal-date-column">
+                <span class="day">12</span>
+                <span class="month">NOV</span>
+                <span class="year">2026</span>
+              </div>
+              <div class="cal-details-column">
+                <div class="cal-school-header">
+                  <h5>Colegio Vista Hermosa (Campus Central)</h5>
+                  <span class="cal-badge-pill green">Confirmado</span>
+                </div>
+                <div class="cal-meta-row">
+                  <span>🎓 <strong>450 Graduados</strong></span>
+                  <span>🏛️ <strong>Gradas 8 Niveles</strong></span>
+                  <span>⏰ <strong>Llegada de equipo: 7:30 AM</strong></span>
+                  <span>👤 <strong>Fotógrafo: Roberto Garza</strong></span>
+                </div>
+                <div class="cal-note-box">
+                  💡 <em>Montaje en explanada cívica central. Revisión en pantalla in situ para garantizar ojos abiertos de todos los alumnos.</em>
+                </div>
+              </div>
+            </div>
+
+            <div class="calendar-event-card">
+              <div class="cal-date-column">
+                <span class="day">19</span>
+                <span class="month">NOV</span>
+                <span class="year">2026</span>
+              </div>
+              <div class="cal-details-column">
+                <div class="cal-school-header">
+                  <h5>Prepa Tec Campus Santa Fe</h5>
+                  <span class="cal-badge-pill green">Confirmado</span>
+                </div>
+                <div class="cal-meta-row">
+                  <span>🎓 <strong>320 Alumnos</strong></span>
+                  <span>🎓 <strong>Tomas de Toga & Panorámica</strong></span>
+                  <span>⏰ <strong>Llegada de equipo: 8:00 AM</strong></span>
+                  <span>👤 <strong>Equipo de 3 fotógrafos</strong></span>
+                </div>
+                <div class="cal-note-box">
+                  💡 <em>Préstamo de 35 togas institucionales y birretes para toma individual y posterior toma monumental.</em>
+                </div>
+              </div>
+            </div>
+
+            <div class="calendar-event-card">
+              <div class="cal-date-column">
+                <span class="day">28</span>
+                <span class="month">NOV</span>
+                <span class="year">2026</span>
+              </div>
+              <div class="cal-details-column">
+                <div class="cal-school-header">
+                  <h5>Colegio Alemán Alexander von Humboldt</h5>
+                  <span class="cal-badge-pill blue">En Coordinación</span>
+                </div>
+                <div class="cal-meta-row">
+                  <span>🎓 <strong>180 Graduados</strong></span>
+                  <span>🏛️ <strong>Cancha de Honor</strong></span>
+                  <span>⏰ <strong>Llegada de equipo: 9:00 AM</strong></span>
+                </div>
+                <div class="cal-note-box">
+                  💡 <em>Se coordinó con el comité de padres de familia el acceso vehicular para la descarga de gradas a las 7:00 AM.</em>
+                </div>
+              </div>
+            </div>
+
+            <div class="calendar-event-card">
+              <div class="cal-date-column">
+                <span class="day">05</span>
+                <span class="month">DIC</span>
+                <span class="year">2026</span>
+              </div>
+              <div class="cal-details-column">
+                <div class="cal-school-header">
+                  <h5>Facultad de Medicina (Generación LXIV)</h5>
+                  <span class="cal-badge-pill green">Confirmado</span>
+                </div>
+                <div class="cal-meta-row">
+                  <span>🎓 <strong>380 Médicos Cirujanos</strong></span>
+                  <span>🏛️ <strong>Explanada Principal</strong></span>
+                  <span>⏰ <strong>Llegada de equipo: 7:00 AM</strong></span>
+                </div>
+                <div class="cal-note-box">
+                  💡 <em>Toma monumental con batas blancas y estandarte institucional conmemorativo.</em>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 3: Colegios con Fotos Listas -->
         <div class="admin-tab-panel" id="tab-vaults">
           <div class="vaults-header-bar">
             <div>
-              <h3 style="font-size: 1.25rem; font-weight: 800; color: #fff; margin-bottom: 0.25rem;">Generaciones y Galerías Privadas</h3>
-              <p style="font-size: 0.82rem; color: var(--text-dim);">Administra las bóvedas protegidas por código para los alumnos de cada colegio.</p>
+              <h4 style="font-size: 1.15rem; font-weight: 700; color: #fff; margin-bottom: 0.2rem;">Colegios con Galerías Listas para Familias</h4>
+              <p style="font-size: 0.84rem; color: var(--text-dim);">Cada colegio tiene una clave sencilla para que los alumnos y padres vean sus fotografías.</p>
             </div>
             <button type="button" class="btn btn-gold btn-sm" id="btn-open-new-vault-modal">
-              <span>+ Registrar Nueva Generación</span>
+              <span>+ Agregar Nuevo Colegio</span>
             </button>
           </div>
 
           <div class="vaults-grid" id="admin-vaults-grid">
             <!-- Injected dynamically by app.js -->
-          </div>
-        </div>
-
-        <!-- Tab 3: Paquetes & Tarifario -->
-        <div class="admin-tab-panel" id="tab-pricing">
-          <div style="margin-bottom: 1.75rem;">
-            <h3 style="font-size: 1.25rem; font-weight: 800; color: #fff; margin-bottom: 0.25rem;">Catálogo de Paquetes Oficiales & Tarifario Escolar</h3>
-            <p style="font-size: 0.82rem; color: var(--text-dim);">Estructura de precios por alumno para comités de graduación y sesiones en estudio.</p>
-          </div>
-
-          <div class="pricing-admin-grid">
-            <div class="pricing-admin-card featured-package">
-              <div class="pricing-admin-badge">⭐ Paquete Más Vendido a Escuelas</div>
-              <div class="pricing-admin-title">Magna Panorámica de Generación</div>
-              <div class="pricing-admin-rate">$1,250 <span>MXN / alumno</span></div>
-              <ul class="pricing-feature-list">
-                <li>✅ Toma monumental en campus con gradas de seguridad</li>
-                <li>✅ Cuadro panorámico enmarcado en caoba con marialuisa</li>
-                <li>✅ Placa metálica conmemorativa dorada con escudo de colegio</li>
-                <li>✅ Retoque digital gigapíxel de alta fidelidad</li>
-                <li>✅ Acceso a Bóveda Digital individual 300 DPI</li>
-              </ul>
-              <button type="button" class="btn btn-gold btn-sm" style="width: 100%; justify-content: center;" onclick="showToast('Condiciones de Magna Panorámica verificadas', 'success')">Configurar Condiciones</button>
-            </div>
-
-            <div class="pricing-admin-card">
-              <div class="pricing-admin-badge">Tradición Académica</div>
-              <div class="pricing-admin-title">Paquete Toga, Birrete & Medalla</div>
-              <div class="pricing-admin-rate">$890 <span>MXN / alumno</span></div>
-              <ul class="pricing-feature-list">
-                <li>✅ Sesión individual de toga con préstamo de atuendo oficial</li>
-                <li>✅ 4 Fotografías tamaño título y 6 tamaño credencial mate</li>
-                <li>✅ Carpeta conmemorativa de lujo con pergamino oficial</li>
-                <li>✅ Retoque fino facial y claroscuro de estudio</li>
-                <li>✅ Archivo digital alta resolución para trámite de título</li>
-              </ul>
-              <button type="button" class="btn btn-outline-gold btn-sm" style="width: 100%; justify-content: center;" onclick="showToast('Paquete de Toga actualizado en tarifario', 'success')">Configurar Condiciones</button>
-            </div>
-
-            <div class="pricing-admin-card">
-              <div class="pricing-admin-badge">Premium Ejecutivo & Dron</div>
-              <div class="pricing-admin-title">Cobertura Completa + Video Cinematográfico</div>
-              <div class="pricing-admin-rate">$1,850 <span>MXN / alumno</span></div>
-              <ul class="pricing-feature-list">
-                <li>✅ Incluye Paquete Panorámica + Paquete Toga completo</li>
-                <li>✅ Tomas cinematográficas con Dron 4K en campus</li>
-                <li>✅ Video teaser conmemorativo de generación en redes</li>
-                <li>✅ Anuario digital interactivo con código QR para cada alumno</li>
-                <li>✅ Cobertura del pase de lista y lanzamiento de birrete</li>
-              </ul>
-              <button type="button" class="btn btn-outline-gold btn-sm" style="width: 100%; justify-content: center;" onclick="showToast('Paquete Cinematográfico activo en cotizador', 'success')">Configurar Condiciones</button>
-            </div>
-          </div>
-
-          <!-- Profit Calculator for Studio -->
-          <div class="profit-calculator-box">
-            <div class="calculator-head">
-              <div>
-                <div class="calculator-title">Calculadora de Rentabilidad por Generación</div>
-                <p style="font-size: 0.85rem; color: var(--text-dim); margin-top: 0.2rem;">Simula las ganancias proyectadas para el estudio según el tamaño de la escuela.</p>
-              </div>
-              <div style="font-family: var(--font-mono); font-size: 0.85rem; background: rgba(245, 158, 11, 0.15); border: 1px solid var(--gold); color: var(--gold-light); padding: 0.35rem 0.85rem; border-radius: 8px;">
-                Margen Promedio Estimado: <strong>68%</strong>
-              </div>
-            </div>
-
-            <div class="calculator-slider-wrap">
-              <div class="calculator-slider-label">
-                <span>Número de alumnos contratados:</span>
-                <strong style="color: var(--gold-vibrant); font-size: 1.15rem;" id="calc-students-label">250 alumnos</strong>
-              </div>
-              <input type="range" min="30" max="600" step="10" value="250" class="calculator-slider" id="calc-students-slider">
-            </div>
-
-            <div class="calculator-results-grid">
-              <div class="calculator-result-card">
-                <div class="calc-res-label">Ingreso Bruto de la Generación</div>
-                <div class="calc-res-amount" id="calc-gross-revenue">$312,500 MXN</div>
-              </div>
-
-              <div class="calculator-result-card">
-                <div class="calc-res-label">Costos Directos (Marcos, Gradas & Impresión)</div>
-                <div class="calc-res-amount" style="color: #fca5a5;" id="calc-costs">$100,000 MXN</div>
-              </div>
-
-              <div class="calculator-result-card">
-                <div class="calc-res-label">Utilidad Neta Proyectada</div>
-                <div class="calc-res-amount green-highlight" id="calc-net-profit">$212,500 MXN</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Tab 4: Métricas & Temporada -->
-        <div class="admin-tab-panel" id="tab-stats">
-          <div class="stats-calendar-grid">
-            <div class="stats-card-box">
-              <div class="stats-card-title">
-                <span>📊</span> Desglose de Contrataciones por Tipo de Servicio
-              </div>
-              
-              <div class="stats-bar-item">
-                <div class="stats-bar-header">
-                  <span>Fotografía Panorámica con Gradas en Campus</span>
-                  <strong>68% (720 alumnos)</strong>
-                </div>
-                <div class="stats-progress-track">
-                  <div class="stats-progress-fill" style="width: 68%;"></div>
-                </div>
-              </div>
-
-              <div class="stats-bar-item">
-                <div class="stats-bar-header">
-                  <span>Sesión Individual de Toga & Diploma</span>
-                  <strong>84% (890 alumnos)</strong>
-                </div>
-                <div class="stats-progress-track">
-                  <div class="stats-progress-fill" style="width: 84%; background: linear-gradient(90deg, #3b82f6, #60a5fa);"></div>
-                </div>
-              </div>
-
-              <div class="stats-bar-item">
-                <div class="stats-bar-header">
-                  <span>Tomas de Generación con Dron 4K</span>
-                  <strong>45% (470 alumnos)</strong>
-                </div>
-                <div class="stats-progress-track">
-                  <div class="stats-progress-fill" style="width: 45%; background: linear-gradient(90deg, #10b981, #34d399);"></div>
-                </div>
-              </div>
-
-              <div class="stats-bar-item">
-                <div class="stats-bar-header">
-                  <span>Sesiones Personales & Marca en Estudio</span>
-                  <strong>32% (340 clientes)</strong>
-                </div>
-                <div class="stats-progress-track">
-                  <div class="stats-progress-fill" style="width: 32%; background: linear-gradient(90deg, #8b5cf6, #a78bfa);"></div>
-                </div>
-              </div>
-            </div>
-
-            <div class="stats-card-box">
-              <div class="stats-card-title">
-                <span>📅</span> Calendario Próximo de Tomas en Campus
-              </div>
-
-              <div class="calendar-list-item">
-                <div class="cal-date-badge">
-                  <div>12</div>
-                  <small>NOV</small>
-                </div>
-                <div class="cal-event-info">
-                  <h5>Colegio Vista Hermosa (Campus Central)</h5>
-                  <p>Panorámica Escolar · 450 Graduados · Gradas 8 Niveles</p>
-                </div>
-              </div>
-
-              <div class="calendar-list-item">
-                <div class="cal-date-badge">
-                  <div>19</div>
-                  <small>NOV</small>
-                </div>
-                <div class="cal-event-info">
-                  <h5>Prepa Tec Campus Santa Fe</h5>
-                  <p>Sesiones de Toga & Toma Monumental · 320 Alumnos</p>
-                </div>
-              </div>
-
-              <div class="calendar-list-item">
-                <div class="cal-date-badge">
-                  <div>28</div>
-                  <small>NOV</small>
-                </div>
-                <div class="cal-event-info">
-                  <h5>Colegio Alemán Alexander von Humboldt</h5>
-                  <p>Fotografía de Generación & Dron · 180 Graduados</p>
-                </div>
-              </div>
-
-              <div class="calendar-list-item">
-                <div class="cal-date-badge">
-                  <div>05</div>
-                  <small>DIC</small>
-                </div>
-                <div class="cal-event-info">
-                  <h5>Facultad de Medicina (Generación LXIV)</h5>
-                  <p>Toma en Explanada Principal · 380 Médicos Cirujanos</p>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
 
