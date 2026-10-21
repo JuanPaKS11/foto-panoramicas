@@ -7,47 +7,47 @@
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap');
 
 :root {
-  /* Dark Royal Blue Color System (Azul Rey Oscuro) */
-  --bg-deep: #040c1d;          /* Fondo base más profundo */
-  --bg-royal: #061536;         /* Azul rey oscuro principal */
-  --bg-surface: #0a1f4d;       /* Superficie elevada / tarjetas */
-  --bg-surface-hover: #0f2b66; /* Hover interactivo */
-  --bg-card: rgba(10, 31, 77, 0.75);
-  --bg-card-solid: #0c2354;
-  --bg-glass: rgba(6, 21, 54, 0.92);
-  --bg-glass-heavy: rgba(4, 12, 29, 0.97);
+  /* Warm Midnight Slate & Atelier Palette (Estilo Estudio de Fotografía Boutique) */
+  --bg-deep: #0a0e17;          /* Fondo base cálido profundo */
+  --bg-royal: #0f172a;         /* Pizarra noche elegante */
+  --bg-surface: #151f33;       /* Superficie sobria / tarjetas */
+  --bg-surface-hover: #1c2942; /* Hover fino */
+  --bg-card: rgba(15, 23, 42, 0.85);
+  --bg-card-solid: #131c2e;
+  --bg-glass: rgba(15, 23, 42, 0.94);
+  --bg-glass-heavy: rgba(10, 14, 23, 0.98);
 
-  /* Gold & Champagne Accents (Logo Official Match) */
-  --gold: #f59e0b;
-  --gold-vibrant: #eab308;
-  --gold-light: #fef08a;
-  --gold-dark: #b45309;
-  --gold-glow: rgba(245, 158, 11, 0.25);
-  --gold-gradient: linear-gradient(135deg, #fef08a 0%, #f59e0b 50%, #b45309 100%);
+  /* Warm Natural Gold & Brass Accents (Oro Cálido de Taller de Enmarcado) */
+  --gold: #c59b27;
+  --gold-vibrant: #d4a737;
+  --gold-light: #f3e5c0;
+  --gold-dark: #8c6a12;
+  --gold-glow: rgba(197, 155, 39, 0.15);
+  --gold-gradient: linear-gradient(135deg, #f3e5c0 0%, #c59b27 50%, #8c6a12 100%);
 
-  /* Royal Blue Accents */
-  --royal-blue: #1d4ed8;
-  --royal-light: #3b82f6;
-  --royal-glow: rgba(29, 78, 216, 0.3);
+  /* Royal Blue Accents (Sobrio y Clásico) */
+  --royal-blue: #1e3a8a;
+  --royal-light: #2563eb;
+  --royal-glow: rgba(30, 58, 138, 0.2);
 
   /* Typography Colors */
-  --text-main: #ffffff;
+  --text-main: #f8fafc;
   --text-muted: #cbd5e1;
   --text-dim: #94a3b8;
-  --text-inverse: #040c1d;
+  --text-inverse: #0a0e17;
 
-  /* Borders & Dividers */
-  --border-subtle: rgba(255, 255, 255, 0.1);
-  --border-medium: rgba(255, 255, 255, 0.18);
-  --border-royal: rgba(59, 130, 246, 0.35);
-  --border-gold: rgba(245, 158, 11, 0.38);
+  /* Borders & Dividers (Sutiles y Finos) */
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-medium: rgba(255, 255, 255, 0.14);
+  --border-royal: rgba(37, 99, 235, 0.28);
+  --border-gold: rgba(197, 155, 39, 0.32);
 
-  /* Shadows */
-  --shadow-sm: 0 4px 14px rgba(0, 0, 0, 0.35);
-  --shadow-md: 0 12px 36px rgba(0, 0, 0, 0.5);
-  --shadow-lg: 0 24px 60px rgba(0, 0, 0, 0.7);
-  --shadow-royal: 0 10px 30px rgba(6, 21, 54, 0.6);
-  --shadow-gold: 0 10px 28px rgba(245, 158, 11, 0.22);
+  /* Shadows (Naturales, Fotográficas, Cero Neón) */
+  --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.45);
+  --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.65);
+  --shadow-royal: 0 8px 24px rgba(10, 14, 23, 0.5);
+  --shadow-gold: 0 6px 18px rgba(0, 0, 0, 0.3);
 
   /* Typography */
   --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -165,12 +165,24 @@ body {
 }
 
 /* Typography Helpers */
-h1, h2, h3, h4, h5, h6 {
+h1, h2 {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  color: var(--text-main);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+
+h3, h4, h5, h6 {
   font-family: var(--font-sans);
   font-weight: 700;
   color: var(--text-main);
-  line-height: 1.18;
-  letter-spacing: -0.02em;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+
+.font-serif {
+  font-family: var(--font-serif) !important;
 }
 
 .text-gold {
@@ -537,19 +549,21 @@ button {
 }
 
 .hero-grand-title {
-  font-size: clamp(2.2rem, 5vw, 4.2rem);
-  font-weight: 800;
-  line-height: 1.1;
-  margin-bottom: 1rem;
+  font-family: var(--font-serif);
+  font-size: clamp(2.4rem, 5.5vw, 4.4rem);
+  font-weight: 600;
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  margin-bottom: 1.15rem;
   color: #ffffff;
 }
 
 .hero-grand-desc {
-  font-size: clamp(1rem, 2vw, 1.15rem);
+  font-size: clamp(1.02rem, 2vw, 1.18rem);
   color: var(--text-muted);
-  max-width: 680px;
-  margin: 0 auto 2rem;
-  line-height: 1.6;
+  max-width: 720px;
+  margin: 0 auto 2.2rem;
+  line-height: 1.65;
 }
 
 /* Hero Switcher: Horizontal touch scrolling on mobile */
@@ -750,6 +764,79 @@ button {
   font-size: 0.84rem;
   color: var(--text-muted);
   line-height: 1.45;
+}
+
+/* ==========================================================================
+   Craft & Security Pillars (Valores Reales del Estudio & Taller)
+   ========================================================================== */
+.craft-pillars-section {
+  padding: 5rem 0 3rem;
+  position: relative;
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+  background: linear-gradient(180deg, rgba(10, 14, 23, 0.85) 0%, rgba(15, 23, 42, 0.95) 50%, rgba(10, 14, 23, 0.85) 100%);
+}
+
+.craft-pillars-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+.craft-pillar-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 16px;
+  padding: 1.75rem 1.4rem;
+  transition: var(--trans-smooth);
+  display: flex;
+  flex-direction: column;
+}
+
+.craft-pillar-card:hover {
+  border-color: var(--border-gold);
+  transform: translateY(-4px);
+  background: var(--bg-surface);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+}
+
+.craft-pillar-icon-wrap {
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+  background: rgba(197, 155, 39, 0.12);
+  border: 1px solid var(--border-gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  margin-bottom: 1.25rem;
+  color: var(--gold-vibrant);
+}
+
+.craft-pillar-title {
+  font-family: var(--font-serif);
+  font-size: 1.22rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 0.6rem;
+  line-height: 1.25;
+}
+
+.craft-pillar-desc {
+  font-size: 0.86rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+}
+
+.craft-pillar-tag {
+  margin-top: auto;
+  padding-top: 1rem;
+  font-size: 0.72rem;
+  font-family: var(--font-mono);
+  color: var(--gold-vibrant);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
 }
 
 /* ==========================================================================
@@ -2333,14 +2420,14 @@ body.mobile-menu-active {
    EXECUTIVE DEMO BAR (Top Client Presentation Switcher)
    ========================================================================== */
 .demo-executive-bar {
-  background: linear-gradient(90deg, #020712 0%, #061536 50%, #030a1b 100%);
-  border-bottom: 1px solid rgba(245, 158, 11, 0.28);
+  background: #090e18;
+  border-bottom: 1px solid var(--border-gold);
   color: #fff;
   font-size: 0.82rem;
   padding: 0.45rem 0;
   position: relative;
   z-index: 1001;
-  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.45);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
 }
 
 .demo-bar-inner {
@@ -2362,15 +2449,8 @@ body.mobile-menu-active {
   height: 8px;
   border-radius: 50%;
   background: #10b981;
-  box-shadow: 0 0 10px #10b981;
-  animation: pulseGreen 1.8s infinite;
   flex-shrink: 0;
-}
-
-@keyframes pulseGreen {
-  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
-  70% { transform: scale(1.1); box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
-  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+  display: inline-block;
 }
 
 .demo-bar-tag {
@@ -2378,10 +2458,10 @@ body.mobile-menu-active {
   font-weight: 700;
   font-size: 0.74rem;
   letter-spacing: 0.08em;
-  background: rgba(245, 158, 11, 0.12);
+  background: rgba(197, 155, 39, 0.15);
   padding: 0.2rem 0.55rem;
   border-radius: 4px;
-  border: 1px solid rgba(245, 158, 11, 0.25);
+  border: 1px solid rgba(197, 155, 39, 0.3);
 }
 
 .demo-bar-sep {
@@ -2434,20 +2514,19 @@ body.mobile-menu-active {
 }
 
 .btn-demo-mode.highlight-admin:hover {
-  background: linear-gradient(135deg, rgba(245, 158, 11, 0.35) 0%, rgba(180, 83, 9, 0.35) 100%);
-  box-shadow: 0 0 15px rgba(245, 158, 11, 0.35);
+  background: linear-gradient(135deg, rgba(197, 155, 39, 0.25) 0%, rgba(140, 106, 18, 0.25) 100%);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
   transform: translateY(-1px);
 }
 
 .badge-counter-mini {
-  background: #ef4444;
+  background: #e11d48;
   color: #fff;
   font-size: 0.68rem;
   padding: 0.1rem 0.4rem;
   border-radius: 999px;
   font-weight: 800;
   margin-left: 0.2rem;
-  box-shadow: 0 0 8px rgba(239, 68, 68, 0.6);
 }
 
 /* Nav Bar Admin Quick Button */
@@ -2461,8 +2540,8 @@ body.mobile-menu-active {
 
 .btn-outline-gold:hover {
   background: var(--gold);
-  color: #040c1d;
-  box-shadow: 0 0 16px var(--gold-glow);
+  color: #0a0e17;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
 }
 
 /* Quote action buttons group */
@@ -2474,8 +2553,8 @@ body.mobile-menu-active {
 }
 
 .btn-secondary-pro {
-  background: rgba(10, 31, 77, 0.85);
-  border: 1px solid rgba(245, 158, 11, 0.4);
+  background: rgba(21, 31, 51, 0.85);
+  border: 1px solid var(--border-gold);
   color: var(--gold-light);
   font-weight: 600;
   padding: 1.1rem 1.8rem;
@@ -2489,8 +2568,8 @@ body.mobile-menu-active {
 }
 
 .btn-secondary-pro:hover {
-  background: rgba(15, 43, 102, 0.95);
-  border-color: var(--gold);
+  background: rgba(28, 41, 66, 0.95);
+  border-color: var(--gold-vibrant);
   color: #fff;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
   transform: translateY(-2px);
@@ -2521,10 +2600,10 @@ body.mobile-menu-active {
 .admin-suite-window {
   max-width: 1360px;
   margin: 1rem auto;
-  background: #061129;
-  border: 1px solid rgba(245, 158, 11, 0.35);
+  background: #0f172a;
+  border: 1px solid var(--border-gold);
   border-radius: 20px;
-  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.85), 0 0 40px rgba(245, 158, 11, 0.12);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.85);
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -3543,8 +3622,11 @@ body.mobile-menu-active {
   }
 }
 
-/* Responsive Rules for Admin Suite */
+/* Responsive Rules for Admin Suite & Craft Pillars */
 @media (max-width: 1024px) {
+  .craft-pillars-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
   .admin-kpi-strip {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -3560,6 +3642,9 @@ body.mobile-menu-active {
 }
 
 @media (max-width: 768px) {
+  .craft-pillars-grid {
+    grid-template-columns: 1fr;
+  }
   .demo-bar-desc, .demo-bar-sep {
     display: none;
   }

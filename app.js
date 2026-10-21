@@ -145,7 +145,7 @@ function initGrandHero() {
 
           if (captionTitle) captionTitle.textContent = currentImgTitle;
           if (captionDesc) captionDesc.textContent = currentImgDesc;
-          if (badgeText) badgeText.textContent = `${newTag} · 300 DPI GIGAPÍXEL`;
+          if (badgeText) badgeText.textContent = `${newTag} · ENMARCADO ARTESANAL EN MADERA`;
 
           if (mobileTitle) mobileTitle.textContent = currentImgTitle;
           if (mobileDesc) mobileDesc.textContent = currentImgDesc;
@@ -923,24 +923,24 @@ function openProposalModal(quote) {
     <!-- Letterhead -->
     <div class="proposal-header-letterhead">
       <div>
-        <div class="letterhead-brand-title">FOTO PANORÁMICAS PREMIUM</div>
-        <div class="letterhead-brand-sub">Estudio de Fotografía Panorámica Escolar, Monumental & Retrato Fino</div>
+        <div class="letterhead-brand-title font-serif">FOTO PANORÁMICAS MÉXICO</div>
+        <div class="letterhead-brand-sub">Taller de Fotografía Panorámica Escolar, Gradas de Honor & Enmarcado Artesanal</div>
         <div style="font-size: 0.8rem; color: #64748b; margin-top: 0.35rem;">
-          Av. Insurgentes Sur #1480, CDMX · Tel: +52 (55) 8492-3100 · RFC: FPP-160824-H28
+          Av. Insurgentes Sur #1480, Col. Actipan, Benito Juárez, CDMX · Tel: (55) 8492-3100 · RFC: FPM-120918-K82
         </div>
       </div>
       <div class="letterhead-folio-box">
         <div style="font-family: var(--font-mono); font-size: 1.1rem; font-weight: 800; color: #b45309;">${quote.id || 'COT-2026-OFICIAL'}</div>
         <div style="font-size: 0.78rem; color: #64748b; margin-top: 0.2rem;">Fecha de Expedición:</div>
         <div style="font-size: 0.82rem; font-weight: 600; color: #0f172a;">${quote.date || 'Octubre 2026'}</div>
-        <div style="font-size: 0.75rem; color: #16a34a; font-weight: 700; margin-top: 0.25rem;">● Vigencia: 30 Días Hábiles</div>
+        <div style="font-size: 0.75rem; color: #16a34a; font-weight: 700; margin-top: 0.25rem;">● Vigencia: 30 Días Naturales</div>
       </div>
     </div>
 
     <!-- Title Banner -->
     <div class="proposal-title-banner">
-      <h2>PROPUESTA TÉCNICA Y ECONÓMICA DE GRADUACIÓN</h2>
-      <p>Servicio Integral de Fotografía Oficial de Generación, Montaje de Gradas & Bóveda Digital</p>
+      <h2 class="font-serif">PROPUESTA TÉCNICA Y ECONÓMICA DE GRADUACIÓN ESCOLAR</h2>
+      <p>Servicio Integral de Fotografía Oficial de Generación, Gradas con Certificación Estructural & Galería de Alumnos</p>
     </div>
 
     <!-- Client Info -->
@@ -994,9 +994,9 @@ function openProposalModal(quote) {
         </tr>
         <tr>
           <td>
-            <strong>Acceso Individual a Bóveda Digital Privada en Alta Resolución (300 DPI)</strong>
+            <strong>Acceso Individual al Portal de Alumnos en Alta Resolución</strong>
             <div style="font-size: 0.76rem; color: #64748b; margin-top: 0.2rem;">
-              Clave personalizada para que cada alumno descargue la toma panorámica y retratos individuales sin marcas de agua durante 1 año.
+              Clave personalizada para que cada alumno descargue la toma panorámica y retratos individuales sin marcas de agua durante todo el ciclo escolar.
             </div>
           </td>
           <td style="text-align: center;">${countNum}</td>
@@ -1032,10 +1032,10 @@ function openProposalModal(quote) {
     <div class="proposal-terms-box">
       <h4>Condiciones Comerciales & Compromiso de Calidad:</h4>
       <p>
-        1. <strong>Anticipo y Facilidades:</strong> Se formaliza el apartado de fecha con el 30% de anticipo; el resto se liquida previo a la entrega en el plantel.<br>
-        2. <strong>Tiempos de Entrega:</strong> Retoque digital fino gigapíxel y entrega de cuadros terminados en 15 días hábiles posteriores a la sesión.<br>
+        1. <strong>Anticipo y Facilidades:</strong> Se formaliza el apartado de fecha con el 30% de anticipo; el resto se liquida contra entrega de cuadros en el plantel.<br>
+        2. <strong>Tiempos de Entrega:</strong> Retoque fotográfico fino y entrega de cuadros terminados en 15 días hábiles posteriores a la sesión.<br>
         3. <strong>Seguridad en Campus:</strong> Estructura de gradas avalada con memoria de cálculo estructural y personal técnico debidamente uniformado y asegurado.<br>
-        4. <strong>Garantía de Satisfacción:</strong> Si algún alumno parpadea o presenta alguna anomalía, se sustituye la toma digitalmente sin costo alguno.
+        4. <strong>Garantía de Ojos Abiertos:</strong> Si algún alumno parpadea o presenta alguna anomalía, se sustituye la toma digitalmente sin costo alguno.
       </p>
     </div>
 
@@ -1044,15 +1044,15 @@ function openProposalModal(quote) {
       <div>
         <div class="signature-line">
           <strong>Lic. Roberto Garza de la Peña</strong>
-          Director de Operaciones & Producción Escolar<br>
-          <em>Foto Panorámicas Premium</em>
+          Director de Producción y Montaje de Gradas<br>
+          <em>Foto Panorámicas México</em>
         </div>
       </div>
       <div>
         <div class="signature-line">
-          <strong>${quote.contactName}</strong>
-          ${quote.contactRole || 'Representante de Generación'}<br>
-          <em>${quote.schoolName}</em>
+          <strong>Claudia Méndez</strong>
+          Coordinación de Colegios y Comités<br>
+          <em>Tel: (55) 8492-3100</em>
         </div>
       </div>
     </div>
@@ -1088,7 +1088,7 @@ function initAdminSuite() {
     renderAdminVaults();
     modal?.classList.add('active');
     document.body.style.overflow = 'hidden';
-    showToast('Accediendo al Panel de Control de Estudio (Modo Demo Admin)', 'gold');
+    showToast('Abriendo la libreta y agenda del estudio...', 'gold');
   }
 
   function closeSuite() {
