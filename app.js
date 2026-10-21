@@ -1253,11 +1253,10 @@ function renderCrmTable(filter = 'all', searchTerm = '') {
 
   if (quotes.length === 0) {
     container.innerHTML = `
-      <div style="text-align: center; padding: 3rem 1.5rem; background: #171310; border-radius: 16px; border: 1px dashed rgba(255,255,255,0.12);">
-        <div style="font-size: 2.5rem; margin-bottom: 0.6rem;">📋</div>
-        <h4 style="color: #fcf9f2; font-size: 1.15rem; margin-bottom: 0.35rem; font-family: var(--font-serif);">No hay solicitudes con ese filtro</h4>
-        <p style="color: #a89d8d; font-size: 0.88rem; max-width: 440px; margin: 0 auto;">
-          Intenta cambiar el término de búsqueda o haz clic en <strong>"+ Anotar Nueva Escuela"</strong> para agregar una.
+      <div class="empty-state-card">
+        <h4 style="color: #0f172a; font-size: 1.1rem; font-weight: 700; margin-bottom: 0.35rem;">No se encontraron solicitudes</h4>
+        <p style="color: #64748b; font-size: 0.88rem; max-width: 440px; margin: 0 auto;">
+          Intenta cambiar el criterio de búsqueda o presiona "+ Registrar Escuela" para añadir una nueva.
         </p>
       </div>
     `;
@@ -1266,80 +1265,83 @@ function renderCrmTable(filter = 'all', searchTerm = '') {
 
   container.innerHTML = quotes.map(q => {
     let badgeClass = 'status-nueva';
-    let badgeLabel = '🟡 Por llamar hoy';
+    let badgeLabel = 'Por contactar';
     if (q.status === 'En Proceso') {
       badgeClass = 'status-proceso';
-      badgeLabel = '🔵 En pláticas con el comité';
+      badgeLabel = 'En pláticas';
     } else if (q.status === 'Aprobada') {
       badgeClass = 'status-aprobada';
-      badgeLabel = '🟢 Fecha confirmada';
+      badgeLabel = 'Confirmada';
     }
 
     const cleanPhone = (q.contactPhone || '').replace(/[^0-9]/g, '');
-    const waText = encodeURIComponent(`Hola ${q.contactName}, le saluda el equipo de Foto Panorámicas México con respecto a la cotización ${q.id} para ${q.schoolName}. ¿Gusta que agendemos una visita con muestras físicas de marcos de caoba?`);
+    const waText = encodeURIComponent(`Hola ${q.contactName}, le saluda el equipo de Foto Panorámicas México con respecto a la cotización ${q.id} para ${q.schoolName}. ¿Gusta que agendemos una visita para mostrar las muestras físicas de marcos de caoba?`);
 
     return `
       <div class="school-request-card" data-id="${q.id}">
         <!-- Top header row -->
         <div class="request-card-header">
           <div>
-            <div style="display: flex; align-items: center; gap: 0.65rem; margin-bottom: 0.3rem;">
+            <div class="request-meta-top">
               <span class="request-folio-tag">${q.id}</span>
-              <span class="request-date-tag">📅 Solicitud: ${q.date || 'Reciente'}</span>
+              <span class="request-date-tag">Registrada: ${q.date || 'Reciente'}</span>
             </div>
-            <h4 class="request-school-name font-serif">${q.schoolName}</h4>
-            <span class="request-school-sub">📍 ${q.city || 'Ciudad de México'} · Nivel: ${q.level || 'Escolar'}</span>
+            <h4 class="request-school-name">${q.schoolName}</h4>
+            <span class="request-school-sub">${q.city || 'Ciudad de México'} · Nivel: ${q.level || 'Escolar'}</span>
           </div>
 
-          <div style="display: flex; flex-direction: column; align-items: flex-end; gap: 0.35rem;">
+          <div class="request-status-wrap">
             <span class="status-pill-badge ${badgeClass}">${badgeLabel}</span>
-            <span style="font-size: 0.84rem; color: var(--gold-vibrant); font-weight: 700; margin-top: 0.15rem;">Presupuesto: ${q.estimatedTotal || 'A convenir'}</span>
+            <span class="request-budget-pill">Presupuesto: ${q.estimatedTotal || 'A convenir'}</span>
           </div>
         </div>
 
-        <!-- 3 Structured human info columns -->
+        <!-- 3 Structured info columns -->
         <div class="request-card-grid">
           <div class="request-col">
-            <span class="col-label">👤 Persona de Contacto</span>
+            <span class="col-label">Contacto</span>
             <span class="col-val">${q.contactName}</span>
-            <span class="col-sub">${q.contactRole || 'Comité de Graduación'} · 📞 ${q.contactPhone}</span>
+            <span class="col-sub">${q.contactRole || 'Comité de Graduación'} · Tel. ${q.contactPhone}</span>
           </div>
 
           <div class="request-col">
-            <span class="col-label">👥 Generación Escolar</span>
+            <span class="col-label">Generación</span>
             <span class="col-val">${q.studentsCount || '150 alumnos'}</span>
-            <span class="col-sub">🗓️ Fecha tentativa: ${q.eventDate || 'Mayo 2026'}</span>
+            <span class="col-sub">Fecha estimada: ${q.eventDate || 'Mayo 2026'}</span>
           </div>
 
           <div class="request-col">
-            <span class="col-label">🖼️ Paquete Solicitado</span>
+            <span class="col-label">Paquete Seleccionado</span>
             <span class="col-val">${(q.services && q.services[0]) || 'Panorámica en Gradas'}</span>
             <span class="col-sub">${(q.services && q.services.slice(1).join(', ')) || 'Enmarcado en Caoba'}</span>
           </div>
         </div>
 
-        <!-- Workshop Handwritten Note -->
+        <!-- Note box -->
         <div class="request-card-note">
-          <span style="font-weight: 700; color: #fff;">📝 Apunte del estudio:</span>
-          <em>"${q.notes || 'Pendiente de acordar junta de presentación de muestras físicas de cuadros con directores.'}"</em>
+          <strong>Apunte interno:</strong>
+          <span>${q.notes || 'Pendiente de acordar junta de presentación de muestras físicas de cuadros con directores.'}</span>
         </div>
 
         <!-- Action Buttons Row -->
         <div class="request-card-actions">
-          <a href="https://wa.me/${cleanPhone}?text=${waText}" target="_blank" rel="noopener noreferrer" class="btn-card-action btn-wa" title="Escribir por WhatsApp directo">
-            <span>💬</span> <span>Escribir por WhatsApp</span>
+          <a href="https://wa.me/${cleanPhone}?text=${waText}" target="_blank" rel="noopener noreferrer" class="btn-card-action btn-wa" title="Escribir por WhatsApp">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+            <span>WhatsApp</span>
           </a>
 
           <button type="button" class="btn-card-action btn-proposal btn-crm-proposal" data-id="${q.id}" title="Ver Presupuesto Formal con Hoja Membretada">
-            <span>📄</span> <span>Ver Presupuesto en PDF</span>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+            <span>Ver Cotización en PDF</span>
           </button>
 
           <button type="button" class="btn-card-action btn-toggle-status btn-crm-status" data-id="${q.id}" title="Cambiar Estado">
-            <span>🔄</span> <span>Cambiar Estado</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
+            <span>Cambiar Estado</span>
           </button>
 
           <button type="button" class="btn-card-action btn-delete-request btn-crm-delete" data-id="${q.id}" title="Eliminar registro">
-            <span>✕</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
           </button>
         </div>
       </div>

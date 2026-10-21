@@ -29,17 +29,16 @@
   <aside class="demo-executive-bar" id="demo-executive-bar">
     <div class="container demo-bar-inner">
       <div class="demo-bar-badge">
-        <span class="live-pulse"></span>
         <span class="demo-bar-tag">FOTO PANORÁMICAS MÉXICO</span>
-        <span class="demo-bar-sep">|</span>
-        <span class="demo-bar-desc">Taller Artesanal de Fotografía Escolar · Modo Demostración para Presentación a Clientes</span>
+        <span class="demo-bar-sep">·</span>
+        <span class="demo-bar-desc">Demostración para Clientes · Portafolio y Agenda</span>
       </div>
       <div class="demo-bar-actions">
         <button type="button" class="btn-demo-mode active" id="btn-demo-view-public" title="Ver sitio público">
-          <span>🌐</span> <span>Vista Pública</span>
+          <span>Vista Pública</span>
         </button>
-        <button type="button" class="btn-demo-mode highlight-admin" id="btn-open-admin-panel" title="Abrir Libreta y Agenda del Estudio">
-          <span>📖</span> <span>Agenda & Pedidos del Estudio (Demo)</span>
+        <button type="button" class="btn-demo-mode highlight-admin" id="btn-open-admin-panel" title="Abrir Agenda de Escuelas">
+          <span>Agenda de Escuelas</span>
           <span class="badge-counter-mini" id="top-badge-quotes-count">5</span>
         </button>
       </div>
@@ -94,13 +93,13 @@
             <span>Pedir Cotización</span>
           </a>
           <button type="button" class="btn btn-outline-gold btn-sm" id="nav-admin-btn" title="Agenda y Control del Estudio">
-            <span>📖 Agenda del Estudio</span>
+            <span>Agenda de Escuelas</span>
           </button>
         </div>
 
         <div class="mobile-drawer-footer">
           <button type="button" class="btn btn-outline-gold btn-sm" id="mobile-drawer-admin-btn" style="width: 100%; margin-bottom: 0.85rem; justify-content: center;">
-            <span>📖 Agenda & Pedidos del Estudio (Demo)</span>
+            <span>Agenda de Escuelas (Demo)</span>
           </button>
           <div class="drawer-contact-badge">
             <span class="dot-online"></span>
@@ -797,63 +796,66 @@
   <div id="admin-suite-modal" class="admin-suite-modal" aria-hidden="true">
     <div class="admin-suite-window studio-binder">
       
-      <!-- Binder Top Header -->
+      <!-- Studio Planner Top Header (Pixieset / Apple Clean Light Aesthetic) -->
       <div class="binder-header">
         <div class="binder-header-left">
-          <div class="binder-icon">📖</div>
+          <div class="binder-brand-mark">FP</div>
           <div>
-            <div class="binder-tag-label">TALLER ARTESANAL INSURGENTES SUR · CICLO ESCOLAR 2026</div>
-            <h3 class="binder-title font-serif">Libreta de Pedidos & Agenda Escolar</h3>
-            <p class="binder-subtitle">Organizador diario de citas con directores, fechas de fotos en gradas y entrega de cuadros de caoba.</p>
+            <div class="binder-tag-label">FOTO PANORÁMICAS MÉXICO · CONTROL ESCOLAR</div>
+            <h3 class="binder-title">Agenda de Escuelas & Tomas en Campus</h3>
+            <p class="binder-subtitle">Seguimiento de citas con comités, fechas de montaje de gradas y entrega de cuadros de graduación.</p>
           </div>
         </div>
 
         <div class="binder-header-actions">
-          <button type="button" class="btn btn-gold btn-sm" id="btn-admin-add-sample-quote">
-            <span>✍️ + Anotar Nueva Escuela</span>
+          <button type="button" class="btn-studio-primary" id="btn-admin-add-sample-quote">
+            <span>+ Registrar Escuela</span>
           </button>
-          <button type="button" class="btn-binder-close" id="btn-close-admin-suite" aria-label="Cerrar libreta">✕</button>
+          <button type="button" class="btn-binder-close" id="btn-close-admin-suite" aria-label="Cerrar ventana" title="Cerrar ventana">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+          </button>
         </div>
       </div>
 
-      <!-- Warm Status Strip (3 simple human stats) -->
+      <!-- Clean Summary Metrics (No glowing dots, crisp and executive) -->
       <div class="binder-status-strip">
-        <div class="binder-status-item">
-          <span class="status-dot dot-yellow"></span>
+        <div class="binder-status-item stat-item-amber">
+          <div class="stat-indicator"></div>
           <div>
             <strong id="kpi-display-quotes">5 Escuelas</strong>
-            <small id="kpi-subtext-quotes-pending">3 comités por contactar hoy</small>
+            <small id="kpi-subtext-quotes-pending">3 pendientes de contactar</small>
           </div>
         </div>
 
-        <div class="binder-status-item">
-          <span class="status-dot dot-blue"></span>
+        <div class="binder-status-item stat-item-blue">
+          <div class="stat-indicator"></div>
           <div>
-            <strong>4 Tomas en Campus</strong>
-            <small>Gradas programadas este mes</small>
+            <strong>4 Tomas Programadas</strong>
+            <small>Fechas con gradas este mes</small>
           </div>
         </div>
 
-        <div class="binder-status-item">
-          <span class="status-dot dot-green"></span>
+        <div class="binder-status-item stat-item-green">
+          <div class="stat-indicator"></div>
           <div>
             <strong id="kpi-display-schools">24 Colegios</strong>
-            <small>Generaciones atendidas con éxito</small>
+            <small>Generaciones entregadas con éxito</small>
           </div>
         </div>
       </div>
 
-      <!-- Simple, Clean Tabs (Only 3 intuitive tabs) -->
+      <!-- Clean Navigation Tabs -->
       <div class="binder-tabs-nav">
         <button type="button" class="binder-tab-btn active" data-tab="tab-crm">
-          <span>📋</span> Solicitudes de Escuelas
+          Solicitudes y Cotizaciones
           <span class="binder-tab-count" id="tab-badge-crm-count">5</span>
         </button>
         <button type="button" class="binder-tab-btn" data-tab="tab-stats">
-          <span>📅</span> Calendario de Tomas en Campus
+          Calendario de Tomas
+          <span class="binder-tab-count">4</span>
         </button>
         <button type="button" class="binder-tab-btn" data-tab="tab-vaults">
-          <span>🎓</span> Colegios con Fotos Listas
+          Galerías Escolares Listas
           <span class="binder-tab-count" id="tab-badge-vaults-count">5</span>
         </button>
       </div>
@@ -861,47 +863,39 @@
       <!-- Tab Content Area -->
       <div class="binder-content-area">
         
-        <!-- Tab 1: Solicitudes de Escuelas (Card-Based List) -->
+        <!-- Tab 1: Solicitudes de Escuelas -->
         <div class="admin-tab-panel active" id="tab-crm">
-          <!-- Warm friendly helper banner -->
-          <div class="binder-friendly-helper">
-            <span class="helper-icon">💡</span>
-            <div class="helper-text">
-              <strong>Control diario de escuelas y presupuestos:</strong> Toca en <strong>"📄 Ver Presupuesto en PDF"</strong> para abrir la propuesta formal en hoja membretada lista para imprimir, o en <strong>"💬 WhatsApp"</strong> para contactar al comité escolar con un mensaje cordial ya redactado.
-            </div>
-          </div>
-
           <div class="requests-filter-bar">
             <div class="requests-search-box">
-              <span>🔍</span>
-              <input type="text" id="crm-search-input" placeholder="Buscar por colegio, persona o ciudad...">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: #94a3b8;"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+              <input type="text" id="crm-search-input" placeholder="Buscar por colegio, ciudad o contacto...">
             </div>
             <div class="requests-filter-pills">
-              <button type="button" class="crm-filter-btn active" data-filter="all">Todas</button>
+              <button type="button" class="crm-filter-btn active" data-filter="all">Todas (5)</button>
               <button type="button" class="crm-filter-btn" data-filter="Nueva">Por Contactar</button>
               <button type="button" class="crm-filter-btn" data-filter="En Proceso">En Pláticas</button>
               <button type="button" class="crm-filter-btn" data-filter="Aprobada">Confirmadas</button>
             </div>
           </div>
 
-          <!-- Cards Container (rendered by app.js as warm, friendly cards) -->
+          <!-- Cards Container (rendered by app.js as crisp white cards) -->
           <div class="requests-cards-list" id="crm-cards-container">
-            <!-- Injected dynamically by app.js -->
+            <!-- Injected by app.js -->
           </div>
         </div>
 
         <!-- Tab 2: Calendario de Tomas en Campus -->
         <div class="admin-tab-panel" id="tab-stats">
           <div class="calendar-agenda-intro">
-            <h4>Próximas Tomas Programadas con Gradas en Campus</h4>
+            <h4>Tomas Programadas con Gradas en Campus</h4>
             <p>Fechas confirmadas para montaje de gradas modulares, iluminación de exteriores y toma panorámica oficial.</p>
           </div>
 
           <div class="calendar-timeline-list">
             <div class="calendar-event-card">
               <div class="cal-date-column">
-                <span class="day">12</span>
                 <span class="month">NOV</span>
+                <span class="day">12</span>
                 <span class="year">2026</span>
               </div>
               <div class="cal-details-column">
@@ -910,21 +904,21 @@
                   <span class="cal-badge-pill green">Confirmado</span>
                 </div>
                 <div class="cal-meta-row">
-                  <span>🎓 <strong>450 Graduados</strong></span>
-                  <span>🏛️ <strong>Gradas 8 Niveles</strong></span>
-                  <span>⏰ <strong>Llegada de equipo: 7:30 AM</strong></span>
-                  <span>👤 <strong>Fotógrafo: Roberto Garza</strong></span>
+                  <span>Graduados: <strong>450 alumnos</strong></span>
+                  <span>Estructura: <strong>Gradas 8 Niveles</strong></span>
+                  <span>Llegada de equipo: <strong>7:30 AM</strong></span>
+                  <span>Fotógrafo a cargo: <strong>Roberto Garza</strong></span>
                 </div>
                 <div class="cal-note-box">
-                  💡 <em>Montaje en explanada cívica central. Revisión en pantalla in situ para garantizar ojos abiertos de todos los alumnos.</em>
+                  Montaje en explanada cívica central. Acceso vehicular por puerta 3 antes de las 7:00 AM para descarga de gradas.
                 </div>
               </div>
             </div>
 
             <div class="calendar-event-card">
               <div class="cal-date-column">
-                <span class="day">19</span>
                 <span class="month">NOV</span>
+                <span class="day">19</span>
                 <span class="year">2026</span>
               </div>
               <div class="cal-details-column">
@@ -933,21 +927,21 @@
                   <span class="cal-badge-pill green">Confirmado</span>
                 </div>
                 <div class="cal-meta-row">
-                  <span>🎓 <strong>320 Alumnos</strong></span>
-                  <span>🎓 <strong>Tomas de Toga & Panorámica</strong></span>
-                  <span>⏰ <strong>Llegada de equipo: 8:00 AM</strong></span>
-                  <span>👤 <strong>Equipo de 3 fotógrafos</strong></span>
+                  <span>Graduados: <strong>320 alumnos</strong></span>
+                  <span>Servicio: <strong>Tomas de Toga & Panorámica</strong></span>
+                  <span>Llegada de equipo: <strong>8:00 AM</strong></span>
+                  <span>Personal: <strong>Equipo de 3 fotógrafos</strong></span>
                 </div>
                 <div class="cal-note-box">
-                  💡 <em>Préstamo de 35 togas institucionales y birretes para toma individual y posterior toma monumental.</em>
+                  Préstamo de 35 togas institucionales y birretes para toma individual y posterior toma monumental.
                 </div>
               </div>
             </div>
 
             <div class="calendar-event-card">
               <div class="cal-date-column">
-                <span class="day">28</span>
                 <span class="month">NOV</span>
+                <span class="day">28</span>
                 <span class="year">2026</span>
               </div>
               <div class="cal-details-column">
@@ -956,20 +950,20 @@
                   <span class="cal-badge-pill blue">En Coordinación</span>
                 </div>
                 <div class="cal-meta-row">
-                  <span>🎓 <strong>180 Graduados</strong></span>
-                  <span>🏛️ <strong>Cancha de Honor</strong></span>
-                  <span>⏰ <strong>Llegada de equipo: 9:00 AM</strong></span>
+                  <span>Graduados: <strong>180 alumnos</strong></span>
+                  <span>Sede: <strong>Cancha de Honor</strong></span>
+                  <span>Llegada de equipo: <strong>9:00 AM</strong></span>
                 </div>
                 <div class="cal-note-box">
-                  💡 <em>Se coordinó con el comité de padres de familia el acceso vehicular para la descarga de gradas a las 7:00 AM.</em>
+                  Se coordinó con el comité de padres de familia el acceso vehicular para la descarga de gradas a las 7:00 AM.
                 </div>
               </div>
             </div>
 
             <div class="calendar-event-card">
               <div class="cal-date-column">
-                <span class="day">05</span>
                 <span class="month">DIC</span>
+                <span class="day">05</span>
                 <span class="year">2026</span>
               </div>
               <div class="cal-details-column">
@@ -978,12 +972,12 @@
                   <span class="cal-badge-pill green">Confirmado</span>
                 </div>
                 <div class="cal-meta-row">
-                  <span>🎓 <strong>380 Médicos Cirujanos</strong></span>
-                  <span>🏛️ <strong>Explanada Principal</strong></span>
-                  <span>⏰ <strong>Llegada de equipo: 7:00 AM</strong></span>
+                  <span>Graduados: <strong>380 Médicos Cirujanos</strong></span>
+                  <span>Sede: <strong>Explanada Principal</strong></span>
+                  <span>Llegada de equipo: <strong>7:00 AM</strong></span>
                 </div>
                 <div class="cal-note-box">
-                  💡 <em>Toma monumental con batas blancas y estandarte institucional conmemorativo.</em>
+                  Toma monumental con batas blancas y estandarte institucional conmemorativo.
                 </div>
               </div>
             </div>
@@ -994,11 +988,11 @@
         <div class="admin-tab-panel" id="tab-vaults">
           <div class="vaults-header-bar">
             <div>
-              <h4 style="font-size: 1.15rem; font-weight: 700; color: #fff; margin-bottom: 0.2rem;">Colegios con Galerías Listas para Familias</h4>
-              <p style="font-size: 0.84rem; color: var(--text-dim);">Cada colegio tiene una clave sencilla para que los alumnos y padres vean sus fotografías.</p>
+              <h4>Colegios con Galerías Listas para Familias</h4>
+              <p>Cada colegio tiene una clave sencilla para que los alumnos y padres vean sus fotografías.</p>
             </div>
-            <button type="button" class="btn btn-gold btn-sm" id="btn-open-new-vault-modal">
-              <span>+ Agregar Nuevo Colegio</span>
+            <button type="button" class="btn-studio-primary" id="btn-open-new-vault-modal">
+              <span>+ Nuevo Colegio</span>
             </button>
           </div>
 
