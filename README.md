@@ -1,26 +1,26 @@
-# Foto Panorámicas Premium · Studio OS Suite (Enterprise Demo)
+# Foto Panorámicas México · Taller de Fotografía Escolar & Graduaciones (Demo de Presentación)
 
-Plataforma web de alta fidelidad y presentación ejecutiva para estudios fotográficos especializados en fotografía escolar, tomas panorámicas monumentales de generación y retratos de estudio.
+Plataforma web de alta fidelidad para talleres y estudios fotográficos especializados en fotografía escolar, tomas panorámicas monumentales en gradas de seguridad, togas individuales y enmarcado artesanal en caoba.
 
-Diseñada con estética de lujo (Azul Rey Profundo, Zafiro y Oro Cepillado), 100% frontend estático para despliegue sin costo en **GitHub Pages**.
+Diseñada con estética cálida de taller de fotografía de autor (Pizarra noche, bronce cálido y tipografía editorial *Cormorant Garamond*), 100% frontend estático para hospedaje gratuito en **GitHub Pages**.
 
 ---
 
-## 🌟 Características de la Demostración
+## 🌟 Experiencia de la Demostración
 
-### 1. Experiencia Pública para Colegios y Alumnos
-- **Escenario Hero Dinámico:** Conmutador interactivo entre Panorámicas Escolares, Retratos de Estudio y Sesiones Familiares.
-- **Bóveda Digital de Clientes:** Acceso protegido por código PIN (ej: `GRADUACION-2026`, `PREPA-TEC-2026`, `COLEGIO-ALEMAN`, `VALERIA-ESTUDIO`, `FAMILIA-EXTERIOR`) con galería en alta resolución (300 DPI), selección de favoritas ❤️ y descarga.
-- **Cotizador de Ventas en Vivo:** Formulario adaptativo para comités escolares y sesiones personales con conexión directa a WhatsApp.
-- **Generador de Propuesta Formal:** Botón para expedir una cotización ejecutiva membretada con desglose comercial y lista para imprimir o guardar en PDF (`Ctrl + P`).
+### 1. Vista Pública para Colegios, Comités y Familias
+- **Escenario de Bienvenida:** Selector entre tomas panorámicas en gradas de honor, sesiones individuales de toga y birrete, y retratos de estudio.
+- **Pilar de Garantías & Gradas:** 4 pilares esenciales que dan confianza a los directores escolares: Gradas con memoria de cálculo y protección civil, taller propio de enmarcado en madera sólida, garantía de ojos abiertos en monitor in situ, y muestras físicas sin costo en junta de comité.
+- **Portal de Alumnos & Familias:** Acceso protegido por clave de escuela (ej: `GRADUACION-2026`, `PREPA-TEC-2026`, `COLEGIO-ALEMAN`, `VALERIA-ESTUDIO`, `FAMILIA-EXTERIOR`) para ver fotos, marcar favoritas ❤️ y descargar.
+- **Cotizador Escolar Personalizado:** Formulario detallado para escuelas, secundarias y universidades.
+- **Expediente de Cotización Imprimible (PDF):** Generador de presupuesto membretado institucional con desglose de inversión por alumno y condiciones comerciales listo para imprimir (`Ctrl + P`).
 
-### 2. Panel de Control de Estudio (Studio OS Admin Demo)
-- **Acceso con 1 Clic:** Botón permanente `👑 Panel de Estudio (Admin Demo)` en la barra superior y navegación.
-- **KPIs Ejecutivos en Tiempo Real:** Métricas de generaciones activas, graduados con acceso digital, solicitudes en CRM y facturación proyectada.
-- **Bandeja de Cotizaciones (CRM):** Sincronizada automáticamente con el formulario web vía `localStorage`. Permite cambiar estatus (`Nueva`, `En Proceso`, `Aprobada`), contactar por WhatsApp o expedir la propuesta formal.
-- **Gestor de Bóvedas & Generaciones:** Permite dar de alta nuevas escuelas y probar al instante la experiencia desde el punto de vista del alumno.
-- **Calculadora de Rentabilidad:** Deslizador interactivo para proyectar ganancias netas del estudio según el número de alumnos contratados.
-- **Restablecimiento Rápido:** Botón para reiniciar todos los datos de demostración a su estado de fábrica en cualquier momento.
+### 2. Agenda & Panel de Control del Estudio (Demo Interactiva)
+- **Acceso Directo:** Botón `📁 Agenda & Control del Estudio (Demo)` en la barra superior.
+- **KPIs del Estudio:** Colegios atendidos, alumnos registrados, solicitudes de comités y facturación proyectada.
+- **Bandeja de Solicitudes (CRM):** Sincronizada en vivo con el formulario de la página web vía `localStorage`.
+- **Colegios & Galerías de Alumnos:** Administración de claves de entrega para cada colegio.
+- **Calculadora de Rentabilidad:** Proyección de ingresos y costos de enmarcado según el número de alumnos.
 
 ---
 
