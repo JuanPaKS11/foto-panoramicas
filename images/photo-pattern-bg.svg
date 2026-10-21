@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="680" viewBox="0 0 680 680">
+  <defs>
+    <style>
+      .gold-line { stroke: #f59e0b; stroke-width: 1; fill: none; opacity: 0.16; }
+      .blue-line { stroke: #3b82f6; stroke-width: 1; fill: none; opacity: 0.15; }
+      .accent-dot { fill: #f59e0b; opacity: 0.20; }
+    </style>
+  </defs>
+
+  <!-- 1. SILUETA MINIMALISTA DE CÁMARA (Líneas finas, espaciosa, sin textos) -->
+  <g transform="translate(110, 110)">
+    <!-- Cuerpo estilizado -->
+    <path class="gold-line" d="M10 8 L15 3 L29 3 L34 8 L52 8 C54 8 56 10 56 12 L56 38 C56 40 54 42 52 42 L6 42 C4 42 2 40 2 38 L2 12 C2 10 4 8 6 8 Z"/>
+    <!-- Lente óptico concéntrico -->
+    <circle class="gold-line" cx="29" cy="25" r="11"/>
+    <circle class="blue-line" cx="29" cy="25" r="6"/>
+    <circle class="accent-dot" cx="29" cy="25" r="2"/>
+    <!-- Visor -->
+    <rect class="blue-line" x="19" y="1" width="7" height="2" rx="0.5"/>
+    <circle class="accent-dot" cx="46" cy="14" r="1.5"/>
+  </g>
+
+  <!-- 2. RETÍCULA DE VISOR / ENFOQUE MINIMALISTA -->
+  <g transform="translate(490, 190)">
+    <!-- Corchetes de encuadre finos -->
+    <path class="gold-line" d="M0 8 L0 0 L8 0"/>
+    <path class="gold-line" d="M42 8 L42 0 L34 0"/>
+    <path class="gold-line" d="M0 26 L0 34 L8 34"/>
+    <path class="gold-line" d="M42 26 L42 34 L34 34"/>
+    <!-- Cruz de enfoque central -->
+    <line class="blue-line" x1="21" y1="13" x2="21" y2="21"/>
+    <line class="blue-line" x1="17" y1="17" x2="25" y2="17"/>
+    <circle class="accent-dot" cx="21" cy="17" r="1.5"/>
+  </g>
+
+  <!-- 3. DIAFRAGMA ÓPTICO GEOMÉTRICO (Elegante & sutil) -->
+  <g transform="translate(250, 470)">
+    <circle class="gold-line" cx="30" cy="30" r="28"/>
+    <circle class="blue-line" cx="30" cy="30" r="20"/>
+    <circle class="gold-line" cx="30" cy="30" r="12"/>
+    <!-- 6 aspas finas de apertura -->
+    <line class="gold-line" x1="30" y1="10" x2="47" y2="20"/>
+    <line class="gold-line" x1="47" y1="20" x2="47" y2="40"/>
+    <line class="gold-line" x1="47" y1="40" x2="30" y2="50"/>
+    <line class="gold-line" x1="30" y1="50" x2="13" y2="40"/>
+    <line class="gold-line" x1="13" y1="40" x2="13" y2="20"/>
+    <line class="gold-line" x1="13" y1="20" x2="30" y2="10"/>
+    <circle class="accent-dot" cx="30" cy="30" r="2"/>
+  </g>
+
+  <!-- 4. LIGERA LUZ BOKEH ESPACIADA -->
+  <circle cx="560" cy="490" r="12" fill="#f59e0b" opacity="0.04"/>
+  <circle cx="160" cy="380" r="10" fill="#3b82f6" opacity="0.04"/>
+</svg>
