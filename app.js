@@ -109,6 +109,7 @@ function initNavbar() {
    ========================================================================== */
 function initGrandHero() {
   const switchBtns = document.querySelectorAll('.hero-switch-btn');
+  const heroVideo = document.getElementById('grand-hero-video');
   const heroImg = document.getElementById('grand-hero-img');
   const captionTitle = document.getElementById('grand-caption-title');
   const captionDesc = document.getElementById('grand-caption-desc');
@@ -121,113 +122,183 @@ function initGrandHero() {
   const mobileDesc = document.getElementById('mobile-caption-desc');
   const mobileTag = document.getElementById('mobile-dock-tag');
 
-  let currentImgSrc = 'images/panoramic-graduation.jpg';
-  let currentImgTitle = 'Fotografía Panorámica Oficial de Generación';
-  let currentImgDesc = 'Toma monumental en campus de honor con gradas estructuradas para hasta 500+ alumnos.';
+  const btnPlayToggle = document.getElementById('btn-video-toggle-play');
+  const btnSoundToggle = document.getElementById('btn-video-toggle-sound');
+  const iconPause = document.getElementById('icon-pause');
+  const iconPlay = document.getElementById('icon-play');
+  const iconMuted = document.getElementById('icon-muted');
+  const iconSound = document.getElementById('icon-sound');
 
+  let currentType = 'video';
+  let currentImgSrc = 'images/catalogo/web/cuadro_pagina_01.jpg';
+  let currentTitle = 'Video Oficial de Tomas Monumentales en Campus';
+  let currentDesc = 'Montaje de gradas de honor, tomas individuales con toga y emoción de las generaciones en campus.';
+
+  // Play/Pause Video Toggle
+  btnPlayToggle?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    if (!heroVideo) return;
+    if (heroVideo.paused) {
+      heroVideo.play().catch(() => {});
+      if (iconPlay) iconPlay.style.display = 'none';
+      if (iconPause) iconPause.style.display = 'block';
+      showToast('Video reanudado', 'gold');
+    } else {
+      heroVideo.pause();
+      if (iconPlay) iconPlay.style.display = 'block';
+      if (iconPause) iconPause.style.display = 'none';
+      showToast('Video pausado', 'gold');
+    }
+  });
+
+  // Sound Mute/Unmute Toggle
+  btnSoundToggle?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    if (!heroVideo) return;
+    heroVideo.muted = !heroVideo.muted;
+    if (heroVideo.muted) {
+      if (iconMuted) iconMuted.style.display = 'block';
+      if (iconSound) iconSound.style.display = 'none';
+      showToast('Audio silenciado', 'gold');
+    } else {
+      if (iconMuted) iconMuted.style.display = 'none';
+      if (iconSound) iconSound.style.display = 'block';
+      showToast('Audio activado 🔊', 'success');
+    }
+  });
+
+  // Switcher between Video and Catalog Photos
   switchBtns.forEach(btn => {
     btn.addEventListener('click', () => {
       switchBtns.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
 
+      const mediaType = btn.getAttribute('data-type') || 'image';
       const newSrc = btn.getAttribute('data-img');
       const newTitle = btn.getAttribute('data-title');
       const newDesc = btn.getAttribute('data-desc');
       const newTag = btn.getAttribute('data-tag');
 
-      if (heroImg && newSrc) {
+      currentType = mediaType;
+      currentTitle = newTitle || '';
+      currentDesc = newDesc || '';
+
+      if (captionTitle) captionTitle.textContent = currentTitle;
+      if (captionDesc) captionDesc.textContent = currentDesc;
+      if (badgeText) badgeText.textContent = `${newTag} · FOTO PANORÁMICAS PREMIUM`;
+
+      if (mobileTitle) mobileTitle.textContent = currentTitle;
+      if (mobileDesc) mobileDesc.textContent = currentDesc;
+      if (mobileTag) mobileTag.textContent = `${newTag}`;
+
+      if (mediaType === 'video' && heroVideo) {
+        if (heroImg) heroImg.style.display = 'none';
+        heroVideo.style.display = 'block';
+        if (btnPlayToggle) btnPlayToggle.style.display = 'inline-flex';
+        if (btnSoundToggle) btnSoundToggle.style.display = 'inline-flex';
+        heroVideo.play().catch(() => {});
+        if (iconPlay) iconPlay.style.display = 'none';
+        if (iconPause) iconPause.style.display = 'block';
+      } else if (heroImg && newSrc) {
+        if (heroVideo) {
+          heroVideo.pause();
+          heroVideo.style.display = 'none';
+        }
+        if (btnPlayToggle) btnPlayToggle.style.display = 'none';
+        if (btnSoundToggle) btnSoundToggle.style.display = 'none';
+
+        heroImg.style.display = 'block';
         heroImg.style.opacity = '0.3';
+        currentImgSrc = newSrc;
         setTimeout(() => {
           heroImg.src = newSrc;
-          currentImgSrc = newSrc;
-          currentImgTitle = newTitle || '';
-          currentImgDesc = newDesc || '';
-
-          if (captionTitle) captionTitle.textContent = currentImgTitle;
-          if (captionDesc) captionDesc.textContent = currentImgDesc;
-          if (badgeText) badgeText.textContent = `${newTag} · ENMARCADO ARTESANAL EN MADERA`;
-
-          if (mobileTitle) mobileTitle.textContent = currentImgTitle;
-          if (mobileDesc) mobileDesc.textContent = currentImgDesc;
-          if (mobileTag) mobileTag.textContent = `${newTag}`;
-
           heroImg.style.opacity = '1';
-        }, 180);
+        }, 120);
       }
     });
   });
 
-  function openHeroLightbox() {
-    openLightbox(currentImgSrc, currentImgTitle, currentImgDesc);
+  function openHeroFullscreen() {
+    if (currentType === 'video' && heroVideo) {
+      if (heroVideo.requestFullscreen) {
+        heroVideo.requestFullscreen();
+      } else if (heroVideo.webkitRequestFullscreen) {
+        heroVideo.webkitRequestFullscreen();
+      } else {
+        openLightbox('images/catalogo/web/cuadro_pagina_01.jpg', currentTitle, currentDesc);
+      }
+    } else {
+      openLightbox(currentImgSrc, currentTitle, currentDesc);
+    }
   }
 
   zoomBtn?.addEventListener('click', (e) => {
     e.stopPropagation();
-    openHeroLightbox();
+    openHeroFullscreen();
   });
 
   mobileZoomBtn?.addEventListener('click', (e) => {
     e.stopPropagation();
-    openHeroLightbox();
+    openHeroFullscreen();
   });
 
   triggerWrap?.addEventListener('click', (e) => {
     if (!e.target.closest('a') && !e.target.closest('button')) {
-      openHeroLightbox();
+      openHeroFullscreen();
     }
   });
 }
 
 /* ==========================================================================
-   LOCAL STORAGE DATABASE & DATA SEEDS
+   LOCAL STORAGE DATABASE & DATA SEEDS (Catálogo Oficial Fotos Panorámicas Premium)
    ========================================================================== */
 const SEED_SESSIONS = {
   'GRADUACION-2026': {
     id: 'GRADUACION-2026',
-    clientName: 'Colegio Universitario · Generación 2026',
-    sessionType: 'Foto Panorámica de Generación & Toga',
-    date: 'Octubre 2026',
+    clientName: 'Colegio Universitario · Generación Oficial',
+    sessionType: 'Cuadros Panorámicos en Caoba & Toga',
+    date: 'Ciclo 2026',
     status: 'Galería Oficial Aprobada',
     resolution: 'Ultra-HD (300 DPI Imprimible)',
     totalPhotos: 5,
-    cover: 'images/panoramic-graduation.jpg',
+    cover: 'images/catalogo/web/cuadro_pagina_01.jpg',
     photos: [
-      { id: 'grad-01', title: 'Foto Panorámica Oficial de Generación', file: 'images/panoramic-graduation.jpg', specs: 'Formato Panorámico · 450 Graduados' },
-      { id: 'grad-02', title: 'Retrato con Toga y Diploma al Atardecer', file: 'images/graduation-solo.jpg', specs: '85mm f/1.4 · ISO 160' },
-      { id: 'grad-03', title: 'Celebración y Festejo en Campus', file: 'images/graduation-group.jpg', specs: '35mm f/2.0 · ISO 250' },
-      { id: 'grad-04', title: 'Retrato Formal para Título', file: 'images/portrait-female.jpg', specs: '85mm f/2.0 · ISO 100' },
-      { id: 'grad-05', title: 'Retrato Ejecutivo de Egresado', file: 'images/portrait-male.jpg', specs: '85mm f/1.8 · ISO 100' }
+      { id: 'cat-01', title: 'Línea Premium Plus en Caoba Labrada y Escudo Metálico', file: 'images/catalogo/web/cuadro_pagina_01.jpg', specs: 'Toma en Campus · Caoba y Placa Grabada' },
+      { id: 'cat-02', title: 'Paquetes Light ($1,799) y Plata con Anillo ($2,699)', file: 'images/catalogo/web/cuadro_pagina_05.jpg', specs: 'Modelo Estrella y Orión · 3 a 5 Piezas' },
+      { id: 'cat-03', title: 'Línea Clásica MDF · Modelo Estrella Completo', file: 'images/catalogo/web/cuadro_pagina_06.jpg', specs: 'Panorámico 82x34cm · Diploma y Agradecimiento' },
+      { id: 'cat-04', title: 'Línea Clásica MDF · Modelo Taurus con Relieve', file: 'images/catalogo/web/cuadro_pagina_07.jpg', specs: 'Moldura Ondulada · Placa Personalizada' },
+      { id: 'cat-05', title: 'Colección Oficial de Artículos y Anillo de Plata', file: 'images/catalogo/web/cuadro_pagina_02.jpg', specs: 'Panorámico 8x20 · Diploma y Fotopresentador' }
     ]
   },
   'PREPA-TEC-2026': {
     id: 'PREPA-TEC-2026',
-    clientName: 'Prepa Tec Campus Santa Fe · Gen. 42',
-    sessionType: 'Panorámica Monumental & Dron 4K',
-    date: 'Noviembre 2026',
+    clientName: 'Prepa Tec Campus Central',
+    sessionType: 'Panorámica Monumental & Paquetes MDF',
+    date: 'Ciclo 2026',
     status: 'En Retoque Digital & Laboratorio',
     resolution: 'Ultra-HD (300 DPI)',
     totalPhotos: 4,
-    cover: 'images/graduation-group.jpg',
+    cover: 'images/catalogo/web/cuadro_pagina_06.jpg',
     photos: [
-      { id: 'tec-01', title: 'Toma General en Explanada Central', file: 'images/panoramic-graduation.jpg', specs: 'Gradas 8 Niveles · 320 Alumnos' },
-      { id: 'tec-02', title: 'Lanzamiento de Birretes', file: 'images/graduation-group.jpg', specs: 'Ráfaga 20fps · Golden Hour' },
-      { id: 'tec-03', title: 'Retrato de Toga Egresada con Honores', file: 'images/graduation-solo.jpg', specs: '85mm f/1.4 · Bokeh Fino' },
-      { id: 'tec-04', title: 'Retrato Académico Formal', file: 'images/portrait-male.jpg', specs: 'Iluminación Clásica Rembrandt' }
+      { id: 'cat-06', title: 'Cuadros Personalizados: +1,000 Combinaciones', file: 'images/catalogo/web/cuadro_pagina_03.jpg', specs: 'Medida 82x34 cm · Línea Ejecutiva' },
+      { id: 'cat-07', title: 'Modelo Estrella · Paquete Completo 5 Piezas', file: 'images/catalogo/web/cuadro_pagina_06.jpg', specs: 'Panorámico, 2da toma y personalizador' },
+      { id: 'cat-08', title: 'Paquete Plata con Anillo de Graduación', file: 'images/catalogo/web/cuadro_pagina_05.jpg', specs: 'Anillo de plata para dama o caballero' },
+      { id: 'cat-09', title: 'Panorámica Monumental en Caoba con Escudo', file: 'images/catalogo/web/cuadro_pagina_01.jpg', specs: 'Doble marialuisa y cristal antirreflejante' }
     ]
   },
   'COLEGIO-ALEMAN': {
     id: 'COLEGIO-ALEMAN',
     clientName: 'Colegio Alemán Alexander von Humboldt',
-    sessionType: 'Fotografía Oficial de Generación',
-    date: 'Noviembre 2026',
+    sessionType: 'Fotografía Oficial en Gradas de Honor',
+    date: 'Ciclo 2026',
     status: 'Galería Oficial Aprobada',
     resolution: 'Ultra-HD (300 DPI)',
     totalPhotos: 3,
-    cover: 'images/graduation-solo.jpg',
+    cover: 'images/catalogo/web/cuadro_pagina_07.jpg',
     photos: [
-      { id: 'alm-01', title: 'Panorámica Oficial en Cancha de Honor', file: 'images/panoramic-graduation.jpg', specs: '180 Graduados' },
-      { id: 'alm-02', title: 'Retrato de Egresada con Diploma', file: 'images/graduation-solo.jpg', specs: '85mm f/1.4 · ISO 100' },
-      { id: 'alm-03', title: 'Festejo en Jardines', file: 'images/graduation-group.jpg', specs: '35mm f/2.8 · Luz Natural' }
+      { id: 'cat-10', title: 'Línea Clásica MDF · Modelo Taurus', file: 'images/catalogo/web/cuadro_pagina_07.jpg', specs: 'Marco con relieve y laminado térmico' },
+      { id: 'cat-11', title: 'Colección Oficial de Recuerdos y Diplomas', file: 'images/catalogo/web/cuadro_pagina_02.jpg', specs: 'Diploma con datos del egresado' },
+      { id: 'cat-12', title: 'Línea Premium Plus en Caoba', file: 'images/catalogo/web/cuadro_pagina_01.jpg', specs: 'Formato Panorámico Institucional' }
     ]
   },
   'VALERIA-ESTUDIO': {
