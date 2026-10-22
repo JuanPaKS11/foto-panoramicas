@@ -30,13 +30,13 @@ function showToast(message, type = 'gold') {
   const toast = document.createElement('div');
   toast.className = 'toast';
 
-  let icon = '📋';
-  if (type === 'fav') icon = '❤️';
-  if (type === 'success') icon = '✅';
-  if (type === 'download') icon = '📥';
+  let icon = '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#b45309" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>';
+  if (type === 'fav') icon = '<svg viewBox="0 0 24 24" width="18" height="18" fill="#e11d48" stroke="#e11d48" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>';
+  if (type === 'success') icon = '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#16a34a" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>';
+  if (type === 'download') icon = '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#2563eb" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>';
 
   toast.innerHTML = `
-    <span style="font-size: 1.15rem; color: var(--gold);">${icon}</span>
+    <span style="display: flex; align-items: center;">${icon}</span>
     <span>${message}</span>
   `;
 
@@ -187,7 +187,7 @@ const SEED_SESSIONS = {
     clientName: 'Colegio Universitario · Generación 2026',
     sessionType: 'Foto Panorámica de Generación & Toga',
     date: 'Octubre 2026',
-    status: 'Galería Oficial Aprobada ✅',
+    status: 'Galería Oficial Aprobada',
     resolution: 'Ultra-HD (300 DPI Imprimible)',
     totalPhotos: 5,
     cover: 'images/panoramic-graduation.jpg',
@@ -204,7 +204,7 @@ const SEED_SESSIONS = {
     clientName: 'Prepa Tec Campus Santa Fe · Gen. 42',
     sessionType: 'Panorámica Monumental & Dron 4K',
     date: 'Noviembre 2026',
-    status: 'En Retoque Digital & Laboratorio ⏳',
+    status: 'En Retoque Digital & Laboratorio',
     resolution: 'Ultra-HD (300 DPI)',
     totalPhotos: 4,
     cover: 'images/graduation-group.jpg',
@@ -220,7 +220,7 @@ const SEED_SESSIONS = {
     clientName: 'Colegio Alemán Alexander von Humboldt',
     sessionType: 'Fotografía Oficial de Generación',
     date: 'Noviembre 2026',
-    status: 'Galería Oficial Aprobada ✅',
+    status: 'Galería Oficial Aprobada',
     resolution: 'Ultra-HD (300 DPI)',
     totalPhotos: 3,
     cover: 'images/graduation-solo.jpg',
@@ -235,7 +235,7 @@ const SEED_SESSIONS = {
     clientName: 'Valeria Montes',
     sessionType: 'Sesión Personal en Estudio & Retrato',
     date: 'Septiembre 2026',
-    status: 'Fotos Retocadas y Listas ✅',
+    status: 'Fotos Retocadas y Listas',
     resolution: '48.2 Megapíxeles (300 DPI)',
     totalPhotos: 4,
     cover: 'images/portrait-female.jpg',
@@ -251,7 +251,7 @@ const SEED_SESSIONS = {
     clientName: 'Familia Gómez Herrera',
     sessionType: 'Sesión Familiar al Aire Libre (Golden Hour)',
     date: 'Octubre 2026',
-    status: 'Galería Lista para Descarga ✅',
+    status: 'Galería Lista para Descarga',
     resolution: 'Ultra-HD (300 DPI)',
     totalPhotos: 4,
     cover: 'images/outdoor-sunset.jpg',
@@ -470,7 +470,7 @@ function loadClientSession(code) {
         clientName: `Colegio / Cliente ${code}`,
         sessionType: 'Sesión Fotográfica Escolar & Retrato',
         date: 'Ciclo 2026',
-        status: 'Fotos Listas para Descarga ✅',
+        status: 'Fotos Listas para Descarga',
         resolution: 'Ultra-HD (300 DPI)',
         totalPhotos: 4,
         cover: 'images/panoramic-graduation.jpg',
@@ -526,10 +526,10 @@ function renderSessionView(session) {
             <div class="badge-tag" style="margin-bottom: 0.6rem;">CÓDIGO: ${session.id}</div>
             <h2>${session.clientName}</h2>
             <div class="session-meta-pills">
-              <span class="session-pill highlight">📷 ${session.sessionType}</span>
-              <span class="session-pill">📅 ${session.date}</span>
-              <span class="session-pill">💎 ${session.resolution}</span>
-              <span class="session-pill" style="color: #4ade80; border-color: rgba(74, 222, 128, 0.4);">${session.status}</span>
+              <span class="session-pill highlight">${session.sessionType}</span>
+              <span class="session-pill">${session.date}</span>
+              <span class="session-pill">${session.resolution}</span>
+              <span class="session-pill" style="color: #15803d; border-color: #bbf7d0; background: #f0fdf4;">${session.status}</span>
             </div>
           </div>
           <div>
@@ -546,14 +546,14 @@ function renderSessionView(session) {
               <span class="count-badge">${session.photos.length}</span>
             </button>
             <button class="filter-btn-royal" data-filter="favs">
-              <span>❤️ Mis Favoritas</span>
+              <span>Mis Favoritas</span>
               <span class="count-badge" id="badge-fav-count">${favs.length}</span>
             </button>
           </div>
 
           <div class="session-action-group">
             <button class="btn btn-gold btn-sm" id="btn-download-all-photos">
-              <span>⬇ Descargar Todo (ZIP)</span>
+              <span>Descargar Todo (ZIP)</span>
             </button>
           </div>
         </div>
@@ -610,10 +610,9 @@ function renderPhotoGrid(session, filterMode) {
 
   if (filteredPhotos.length === 0 && filterMode === 'favs') {
     grid.innerHTML = `
-      <div style="grid-column: 1 / -1; text-align: center; padding: 3.5rem 2rem; background: var(--bg-card); border-radius: 16px; border: 1px dashed var(--border-medium);">
-        <p style="font-size: 2rem; margin-bottom: 0.5rem;">🤍</p>
-        <h3 style="font-size: 1.3rem; margin-bottom: 0.35rem; color: #fff;">Aún no tienes fotos favoritas marcadas</h3>
-        <p style="color: var(--text-muted); margin-bottom: 1.25rem;">Haz clic en el corazón de cualquier foto para guardarla en tu selección.</p>
+      <div style="grid-column: 1 / -1; text-align: center; padding: 3.5rem 2rem; background: #ffffff; border-radius: 14px; border: 1px dashed #cbd5e1;">
+        <h3 style="font-size: 1.25rem; margin-bottom: 0.35rem; color: #0f172a;">Aún no tienes fotos favoritas seleccionadas</h3>
+        <p style="color: #64748b; margin-bottom: 1.25rem;">Haz clic en el corazón de cualquier fotografía para guardarla en tu selección personal.</p>
         <button class="btn btn-gold btn-sm" onclick="document.querySelector('.filter-btn-royal[data-filter=\\'all\\']').click()">Ver todas las fotos</button>
       </div>
     `;
@@ -625,7 +624,7 @@ function renderPhotoGrid(session, filterMode) {
     const isPano = photo.file.includes('panoramic');
     return `
       <div class="photo-card-royal" data-id="${photo.id}">
-        <button class="btn-fav-heart-royal ${isFav ? 'is-favorite' : ''}" data-id="${photo.id}" title="${isFav ? 'Quitar favorita' : 'Marcar favorita'}">
+        <button class="btn-fav-heart-royal ${isFav ? 'is-favorite' : ''}" data-id="${photo.id}" title="${isFav ? 'Quitar de favoritas' : 'Guardar en favoritas'}">
           ♥
         </button>
         <div class="photo-card-img-wrap ${isPano ? 'panoramic-wrap' : ''}" data-img="${photo.file}" data-title="${photo.title}" data-specs="${photo.specs}">
@@ -638,10 +637,10 @@ function renderPhotoGrid(session, filterMode) {
           </div>
           <div style="display: flex; gap: 0.4rem;">
             <button class="btn-icon-royal btn-inspect" data-img="${photo.file}" data-title="${photo.title}" data-specs="${photo.specs}" title="Ver Pantalla Completa">
-              🔍
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
             </button>
             <a href="${photo.file}" download="${session.id}_${photo.id}.jpg" class="btn-icon-royal" title="Descargar">
-              ⬇
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
             </a>
           </div>
         </div>
@@ -678,7 +677,7 @@ function toggleFavorite(sessionId, photoId, buttonEl) {
   } else {
     favs.push(photoId);
     buttonEl.classList.add('is-favorite');
-    showToast('¡Foto guardada en tus favoritas! ❤️', 'fav');
+    showToast('Foto guardada en tus favoritas', 'fav');
   }
 
   saveStoredFavorites(sessionId, favs);
@@ -832,19 +831,19 @@ function initSalesQuotationSystem() {
 
     // Build WhatsApp message
     const servicesText = checkedServices.map(s => `• ${s}`).join('%0A');
-    const formattedMsg = `📋 *SOLICITUD DE COTIZACIÓN ${category.toUpperCase()}*%0A` +
-      `🏢 *Foto Panorámicas Premium*%0A` +
-      `🔖 *Folio:* ${newQuote.id}%0A%0A` +
-      `🏫 *Institución:* ${encodeURIComponent(schoolName)}%0A` +
-      `👥 *Alumnos/Personas:* ${encodeURIComponent(studentsCount)}%0A` +
-      `📅 *Fecha Tentativa:* ${encodeURIComponent(eventDate)}%0A` +
-      `📍 *Ubicación:* ${encodeURIComponent(schoolCity)}%0A%0A` +
-      `📸 *Servicios de Interés:*%0A${servicesText}%0A%0A` +
-      `👤 *Contacto:* ${encodeURIComponent(contactName)} (${encodeURIComponent(contactRole)})%0A` +
-      `📱 *Teléfono:* ${encodeURIComponent(contactPhone)}%0A` +
-      `✉️ *Correo:* ${encodeURIComponent(contactEmail)}%0A` +
-      `📝 *Notas:* ${encodeURIComponent(quoteNotes)}%0A%0A` +
-      `_Enviado desde el portal web oficial de cotizaciones_`;
+    const formattedMsg = `*SOLICITUD DE COTIZACIÓN ${category.toUpperCase()}*%0A` +
+      `*Foto Panorámicas Premium*%0A` +
+      `*Folio:* ${newQuote.id}%0A%0A` +
+      `*Institución:* ${encodeURIComponent(schoolName)}%0A` +
+      `*Alumnos/Personas:* ${encodeURIComponent(studentsCount)}%0A` +
+      `*Fecha Tentativa:* ${encodeURIComponent(eventDate)}%0A` +
+      `*Ubicación:* ${encodeURIComponent(schoolCity)}%0A%0A` +
+      `*Servicios de Interés:*%0A${servicesText}%0A%0A` +
+      `*Contacto:* ${encodeURIComponent(contactName)} (${encodeURIComponent(contactRole)})%0A` +
+      `*Teléfono:* ${encodeURIComponent(contactPhone)}%0A` +
+      `*Correo:* ${encodeURIComponent(contactEmail)}%0A` +
+      `*Notas:* ${encodeURIComponent(quoteNotes)}%0A%0A` +
+      `_Portal Oficial Foto Panorámicas Premium_`;
 
     setTimeout(() => {
       const waUrl = `https://wa.me/5215500000000?text=${formattedMsg}`;
@@ -1406,7 +1405,7 @@ function renderAdminVaults() {
         <div class="vault-card-cover">
           <img src="${coverImg}" alt="${s.clientName}" loading="lazy">
           <div class="vault-pin-overlay">
-            <span>🔑</span> <span>${s.id}</span>
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 2l-2 2m-2-2l2 2m-4 4l-4 4-2-2-4 4m6-6l-2-2"/><circle cx="7.5" cy="15.5" r="5.5"/></svg> <span>${s.id}</span>
           </div>
           <div class="vault-status-overlay">
             <span class="status-pill-badge status-aprobada">${s.status || 'Publicada'}</span>
@@ -1415,7 +1414,7 @@ function renderAdminVaults() {
 
         <div class="vault-card-body">
           <div class="vault-card-title">${s.clientName}</div>
-          <div class="vault-card-desc">📸 ${s.sessionType}</div>
+          <div class="vault-card-desc">${s.sessionType}</div>
 
           <div class="vault-card-stats-row">
             <span>Fotos: <strong>${s.photos?.length || 4} HD</strong></span>
@@ -1425,10 +1424,10 @@ function renderAdminVaults() {
 
           <div class="vault-card-actions">
             <button class="btn btn-gold btn-sm btn-vault-test-client" data-code="${s.id}" style="flex: 1; justify-content: center;">
-              <span>👁️ Probar como Alumno</span>
+              <span>Probar como Alumno</span>
             </button>
             <button class="btn btn-outline-gold btn-sm btn-vault-toggle-status" data-code="${s.id}" title="Cambiar Estado">
-              <span>⚙️</span>
+              <span>Estado</span>
             </button>
           </div>
         </div>
@@ -1464,9 +1463,9 @@ function renderAdminVaults() {
       const sessions = getStoredSessions();
       if (sessions[code]) {
         if (sessions[code].status.includes('Aprobada')) {
-          sessions[code].status = 'En Retoque Digital & Laboratorio ⏳';
+          sessions[code].status = 'En Retoque Digital & Laboratorio';
         } else {
-          sessions[code].status = 'Galería Oficial Aprobada ✅';
+          sessions[code].status = 'Galería Oficial Aprobada';
         }
         saveStoredSessions(sessions);
         renderAdminVaults();
@@ -1502,7 +1501,7 @@ function initNewVaultModal() {
     const rawCode = document.getElementById('new-vault-code')?.value.trim().toUpperCase();
     const category = document.getElementById('new-vault-category')?.value;
     const students = document.getElementById('new-vault-students')?.value || '200 alumnos';
-    const status = document.getElementById('new-vault-status')?.value || 'Galería Oficial Aprobada ✅';
+    const status = document.getElementById('new-vault-status')?.value || 'Galería Oficial Aprobada';
 
     if (!name || !rawCode) {
       showToast('Por favor completa el nombre y el código PIN', 'gold');
